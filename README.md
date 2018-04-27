@@ -23,7 +23,7 @@ In simple words; it is for you...
   - An easy to use template engine.
 
 
-## Download
+## Download (v1.0)
 > composer create-project limeberry/limeberry
 - Or clone this repository if you want to improve source code of limeberry framework
 
