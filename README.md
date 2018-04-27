@@ -2,8 +2,12 @@
   <img src="https://raw.githubusercontent.com/limeberry/limeberry.github.io/master/assets/img/limeberry_logo.png" width="154" />
 </p>
 
+[![Build Status](https://travis-ci.org/limeberry/limeberry.svg?branch=master)](https://travis-ci.org/limeberry/limeberry)
+
 ## About Limeberry Framework
+
 > <b>Download</b> Or <b>Clone</b> this repository for creating new projects using Limeberry PHP framework.
+
 
 Welcome to Limeberry Framework. Limeberry is an excellent but straightforward application development framework. Limeberry aims to help you in your coding process by speeding up development with ready to use libraries that require minimal configuration. The structure was developed based on the MVC architectural design. You can check out some key featues of the framework;
    - [Easy Project And Environment Configuration](https://limeberry.github.io/docs/configuration.html)
@@ -23,14 +27,14 @@ In simple words; it is for you...
   - An easy to use template engine.
 
 
-## Download
+## Download (v1.0)
 > composer create-project limeberry/limeberry
 - Or clone this repository if you want to improve source code of limeberry framework
 
 ## Learning Limeberry Framework
 We tried to explain the definitions and usage of the framework in a simple user manual. You can start learning Limeberry from the user manual. We are working harder to create slideshow tutorials and some educational material for the framework. We will begin publishing new tutorials as soon as possible.
 - [Limeberry Framework v1.x User Manual](https://limeberry.github.io/docs/index.html)
-- [All Namespaces of Limeberry (Documentation v1.2)](https://limeberry.github.io/namespace/index.html)
+- [All Namespaces of Limeberry Framework (Current)](https://limeberry.github.io/namespace/index.html)
 
 
 
