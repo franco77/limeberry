@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-  <a href="https://travis-ci.org/limeberry/limeberry"> <img src="https://travis-ci.org/limeberry/limeberry.svg?branch=master" alt="Build Status"> </a>
   
+  [![Build Status](https://travis-ci.org/limeberry/limeberry.svg?branch=master)](https://travis-ci.org/limeberry/limeberry)
   [![Latest Stable Version](https://poser.pugx.org/limeberry/limeberry/version)](https://packagist.org/packages/limeberry/limeberry)
   [![Total Downloads](https://poser.pugx.org/limeberry/limeberry/downloads)](https://packagist.org/packages/limeberry/limeberry)
   [![License](https://poser.pugx.org/limeberry/limeberry/license)](https://packagist.org/packages/limeberry/limeberry)
