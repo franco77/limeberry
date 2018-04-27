@@ -2,10 +2,19 @@
   <img src="https://raw.githubusercontent.com/limeberry/limeberry.github.io/master/assets/img/limeberry_logo.png" width="154" />
 </p>
 
-[![Build Status](https://travis-ci.org/limeberry/limeberry.svg?branch=master)](https://travis-ci.org/limeberry/limeberry)
+<p align="center">
+  <a href="https://travis-ci.org/limeberry/limeberry"> <img src="https://travis-ci.org/limeberry/limeberry.svg?branch=master" alt="Build Status"> </a>
+   <a href="https://travis-ci.org/limeberry/limeberry"> <img src="https://travis-ci.org/limeberry/limeberry.svg?branch=master" alt="Build Status"> </a>
+  
+  [![Latest Stable Version](https://poser.pugx.org/limeberry/limeberry/version)](https://packagist.org/packages/limeberry/limeberry)
+  
+  [![Total Downloads](https://poser.pugx.org/limeberry/limeberry/downloads)](https://packagist.org/packages/limeberry/limeberry)
+  
+  [![License](https://poser.pugx.org/limeberry/limeberry/license)](https://packagist.org/packages/limeberry/limeberry)
+</p>
+
 
 ## About Limeberry Framework
-
 > <b>Download</b> Or <b>Clone</b> this repository for creating new projects using Limeberry PHP framework.
 
 
