@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Creating Tables </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Creating Tables</h3>
+                        <ol class="ug-tocs">
+                                <li><a href="#pagedescription">HTML Table Class</a></li>
+                                <li>Methods
+                                    <ol class="ug-tocs">
+                                                  <li> <a href="table.html#__construct"><code>__construct()</code></a></li>
+                                                <li> <a href="table.html#Create"><code>Create()</code></a></li>
+                                                <li> <a href="table.html#HeaderAttributes"><code>HeaderAttributes()</code></a></li>
+                                                <li> <a href="table.html#TableHeaders"><code>TableHeaders()</code></a></li>
+                                                <li> <a href="table.html#RowAttributes"><code>RowAttributes()</code></a></li>
+                                                <li> <a href="table.html#SpecialTag"><code>SpecialTag()</code></a></li>
+                                                <li> <a href="table.html#AddRow"><code>AddRow()</code></a></li>
+                                                
+                                    </ol>
+                                </li>
+                        
+                            </ol>
+                            <br>
+                            <!-- CONTENT START -->
+                        
+                            <br><br>
+                            <h3 id="pagedescription">HTML Table Class</h3>
+                            <p>
+                            limeberry has a light session class. You can use limeberry framework's session function to manage your session data.
+                            <br>
+                            
+                        
+                            </p>
+                        
+                            <br>
+                        
+                        
+                                        <h3 id="__construct">__construct</h3>
+                                            <p>
+                                            initialize table class<br>
+                                         @param array class attributes, key as tag and value as data<br>
+                                          @return void<br>
+                        
+<pre>
+use limeberry\visual\table;
+
+$mytable = new table();
+$secondTable = new table(array("class"=>"css-table-class"));
+
+</pre>
+                                            </p>
+                        
+                                           
+                        
+                                             <h3 id="Create">Create</h3>
+                                            <p>
+                                            This function is for printing table to view. Table will be shown the place you type this function. Returns complete html table as<b> string</b>.
+                                            <br>
+
+<pre>
+use limeberry\visual\table;
+
+$mytable = new table();
+..[header]
+...[rows]
+.....[other.]
+<b>echo $mytable->Create();</b>
+</pre>
+                                            </p>
+                        
+                                           
+                        
+                        
+                                             <h3 id="HeaderAttributes">HeaderAttributes</h3>
+                                            <p>
+                                            set attributes for table header
+                                            @param array class attributes, key as tag and value as data
+                                            @return void
+<pre>
+use limeberry\visual\table;
+$mytable = new table();
+$mytable->HeaderAttributes(array("class"=>"html-table-header-css", "id"=>"users"));
+
+</pre>
+                                            </p>
+                        
+                                           
+                        
+                                             <h3 id="TableHeaders">TableHeaders</h3>
+                                            <p>
+                                            Set headers for table <br><br>
+                                            @param array header text to show<br>
+                                            @param array class attributes, key as tag and value as data<br>
+                                            @return class instance<br>
+                                           
+<pre>
+use limeberry\visual\table;
+$mytable = new table(array("class"=>"table table-condensed"));
+$mytable->HeaderAttributes();
+<b> $mytable->TableHeaders(array("#", "ID", "Name","Surname"));</b>
+echo $mytable->Create();
+</pre>
+                                            </p>
+                        
+                                           
+                                             <h3 id="RowAttributes">RowAttributes</h3>
+                                            <p>
+                                            set attributes for table rows<br><br>
+                                       @param array class attributes, key as tag and value as data<br>
+                                        @return void<br>
+<pre>
+use limeberry\visual\table;
+$mytable = new table(array("class"=>"table table-condensed"));
+$mytable->HeaderAttributes();
+$mytable->TableHeaders(array("#", "ID", "Name","Surname"));
+<b> $mytable->RowAttributes(array("class"=>"table-row", "id"=>1));</b>
+echo $mytable->Create();
+</pre>
+                                            </p>
+                        
+                                           
+                                             <h3 id="SpecialTag">SpecialTag</h3>
+                                            <p>
+                                            Create your special tags if not available by default in limeberry <br><br>
+                                    @param string your tag ex: < thead>.... </ thead><br>
+                                   @return class instance<br>
+<pre>
+use limeberry\visual\table;
+$mytable = new table(array("class"=>"table table-condensed"));
+$mytable->HeaderAttributes();
+$mytable->TableHeaders(array("#", "ID", "Name","Surname"));
+$mytable->RowAttributes(array("class"=>"table-row", "id"=>1));
+<b>$mytable->SpecialTag("< item> 1 </ item> .... ")->SpecialTag("< test> A </ test>");</b>
+echo $mytable->Create();
+</pre>
+                                            </p>
+                        
+                                           
+                                             <h3 id="AddRow">AddRow</h3>
+                                            <p>
+                                                Add row to current table<br> <br>
+                                      @param array items as array to add<br>
+                                    @param array attributes, key as tag and value as data for each row<br>
+                                    @return class instance <br>
+<pre>
+use limeberry\visual\table;
+$mytable = new table(array("class"=>"table table-condensed"));
+$mytable->HeaderAttributes();
+$mytable->TableHeaders(array("#", "ID", "Name","Surname"));
+$mytable->RowAttributes(array("class"=>"table-row", "id"=>1));
+<b>
+$mytable->AddRow(array("#"=>"1", "ID"=>"1545","Name"=>"limeberry","Surname"=>"Framework"))
+->AddRow(array("#"=>"2", "ID"=>"147","Name"=>"Sinan","Surname"=>"SALIH"))
+->AddRow(array("#"=>"3", "ID"=>"1241","Name"=>"Test","Surname"=>"limeberry"))
+->AddRow(array("#"=>"0", "ID"=>"10","Name"=>"For example","Surname"=>"removed record"), array("class"=>"danger"));
+</b>
+echo $mytable->Create();
+
+</pre>
+                        
+                                            <b>Result for table above:</b>
+<pre>
+<img src="assets\img\table-result.png">
+</pre>
+                                            </p>
+                        
+                                           
+                        
+                        
+                            <!-- ./ END CONTENT -->
+                            <br><br><br>
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    
+                   <br> If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                   <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\visual\Table;</span><br>
+                
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

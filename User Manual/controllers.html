@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Controllers </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Controllers</h3>
+                       
+                        <br>
+                        <ol class="ug-tocs">
+                            <li><a href="#controller">Controllers</a></li>
+                            <li><a href="#default">Default Controller</a></li>
+                            <li><a href="#example_controller">Example Controller</a></li>
+                            <li>Methods
+                                <ol class="ug-tocs">
+                                <li><a href="#owac">Setting Owner &amp; Version for a Controller</a></li>
+                                <li><a href="#public">Public Methods</a></li>
+                                <li><a href="#private">Private Methods</a></li>
+                                <li><a href="#contruct">Contructor</a></li>
+                                </ol>
+                            </li>
+                    
+                        </ol>
+                        <br>
+                        <!-- CONTENT START -->
+                    
+                        <br><br>
+                        <h4 id="controller">Controllers</h4>
+                        <p>
+                            A controller is a class which responds to http requests. All your controller class files 
+                            must be located in controller folder and must contain a Controller suffix. You can read more 
+                            about directory structure <a href="structure.html">Here</a>
+                        </p>
+                    
+                        <br>
+                        <h4 id="default">Default Controller</h4>
+                        <p>
+                            By default in controller folder there is a <span class="ug-code ug-file ug-bold">indexController.php</span> file.
+                            This is the default controller class for limeberry. The core framework file (limeberry\Framework.php) looks in controller 
+                            folder and indexController.php file with a class named indexController and public function <span class="ug-code ug-method ug-bold">IndexAction</span>, 
+                            if not specified in url. For example if client navigates to: http://www.examplesite.com/ this index class and index 
+                            function will be called by default.
+                    
+                    
+                        </p>
+                    
+                        <br>
+                        <h4 id="example_controller">Example Controller</h4>
+                        <p>
+                    <pre>
+                        
+use limeberry\Controller As plController;
+
+class AuthController extends plController{
+
+    
+    public function <span class="ug-code ug-method ug-bold">LoginAction</span>($param=0)
+    {
+            $this->View->Render("login.php");
+    }
+}
+                    </pre>
+                    <br>
+                    Save this file to <span class="ug-code">project_name\application\controller\<span class="ug-method ug-bold"> AuthController.php</span></span> Now when you navigate to : http://localhost/project_name/Auth/Login 
+                    you will see the <span class="ug-code ug-method ug-bold">LoginAction</span> run. 
+                    <br><br>
+                    <span class="ug-keyword ug-bold">Warning</span><br>
+                    <pre>
+(!) Class name must be same with the file name in controller file. In this example you can see 
+that controller/AuthController.php has the class AuthController. 
+<br>
+(!) All functions considered to use as action in controller must be public and must have the <span class="ug-code ug-keyword ug-bold">Action</span> suffix.
+For example in the code above you can see that login action is called LoginAction (but in url is only; Login) 
+and it is public function.
+                    </pre>
+                    <br>
+                        </p>
+                    
+                    
+                    
+                    
+                        <br><br>
+                        <h4 id="owac">Setting Owner &amp; Version for a Controller</h4>
+                        <p>
+                    
+                        <h4>setVersion() &amp; getVersion()</h4>
+                    
+                            Set version for your controller. This function should be called in construct method of your controller
+                    <pre>
+$this-><span class="ug-method">setVersion</span>(<span class="ug-type">string</span>  $prm);
+                    </pre>
+                    
+                        you can use getVersion to return this value.<br>
+                    <pre>
+<span class="ug-method">getVersion</span>() : <span class="ug-type">string</span><br>
+                    </pre>
+                    For using version information of your controller in another controller class just create an instance of controller and call getVersion() function.
+                    
+                    <h4>setAuthor() &amp; getAuthor()</h4>
+                    
+                            Set author for your controller. This function should be called in construct method of your controller
+                    <pre>
+$this-><span class="ug-method">setAuthor</span>(<span class="ug-type">string</span>  $prm);
+                    </pre>
+                    
+                        you can use getAuthor to return this value.<br>
+                    <pre>
+<span class="ug-method">getAuthor</span>() : <span class="ug-type">string</span><br>
+                    </pre>
+                    
+                    
+                        </p>
+                    
+                        <br><br>
+                        <h4 id="public">Public Methods</h4>
+                        <p>
+                            If you want to declare a action result to controller your function must have the 
+                            <span class="ug-code ug-keyword ug-bold">Action</span> suffix.Other functions not
+                            considered to be used as actions, can be defined as private methods.
+                        </p>
+                            <br><br>
+                        <h4 id="private">Private Methods</h4>
+                        <p>
+                    Private methods can be defined and used in controllers.<br>
+                    <pre>
+public function ResetAction()
+{
+    if($this->check())
+    {
+        $this->View->Render("Auth/Reset_Password.phtml");
+    }
+    echo "Hello World";
+}
+private function check(&$param)
+{
+    if(!$param== 1){
+        return false;
+    }else {return true;}
+}
+
+                    </pre>
+                        </p>
+                    
+                            <br><br>
+                        <h4 id="contruct">Constructor</h4>
+                        <p>
+                            You can define your own constructors in controllers, here is an example. <br>
+                    
+                    <pre>
+public function __construct()
+{
+    <span class="ug-method">parent::__construct();</span>
+    //other constructor code here;
+    //load libraries;
+    //etc;
+}
+                    </pre>
+                        </p>
+                    
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    
+                    <br>If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\Controller;</span>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

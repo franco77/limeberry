@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Views </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Views</h3>
+                       
+                        <br>
+                       
+                        <ol class="ug-tocs">
+                            <li><a href="#views">Views</a></li>
+                            <li>Methods
+                                <ol class="ug-tocs">
+                                <li><a href="#render">Render()</a></li>
+                                <li><a href="#isAvailable">isAvailable()</a></li>
+                                <li><a href="#example_use">Example Use</a></li>
+                                </ol>
+                            </li>
+                            <li><a href="#tvbcv">Transfer Variables Between Controllers &amp; Views</a></li>
+                    
+                        </ol>
+                        <br>
+                        <!-- CONTENT START -->
+                    
+                        <br><br>
+                        <h4 id="views">Views</h4>
+                        <p>
+                        Views are html pages that can be loaded by a controller, you can not directly
+                        redirect your application to a view file.
+                        <br>
+                        limeberry stores view files in a folder called 'view'. You can create sub folders 
+                        in view folder if you want to seperate parts of your application.
+                        
+                        </p>
+                    
+                        <br>
+                        <h4 id="render">Render()</h4>
+                        <p>
+                        Return a view to user.
+                        <br>
+                    <pre>
+<span class="ug-method">Render</span>(<span class="ug-type">string</span>  $prm_file,<span class="ug-type">boolean</span>  $isusual  = true);
+                    </pre> <br>
+                    <span class="ug-code ug-keyword">$prm_file</span> File name of your view file <br>
+                    <span class="ug-code ug-keyword">$isusual</span> *optional. If your view is not located in 'view' directory.
+                     <br>
+                        </p>
+                    
+                        <br>
+                        <h4 id="isAvailable">isAvailable()</h4>
+                        <p>
+                        Return true if view file available
+                        <br>
+                    <pre>
+<span class="ug-method">isAvailable</span>(<span class="ug-type">string</span>  $prm_file,<span class="ug-type">boolean</span>  $isusual  = true); : <span class="ug-type">boolean</span>
+                    </pre> <br>
+                    <span class="ug-code ug-keyword">$prm_file</span> File name of your view file <br>
+                    <span class="ug-code ug-keyword">$isusual</span> *optional. If your view is not located in 'view' directory.
+                     <br>
+                        </p>
+                    
+                    
+                        <h4 id="example_use">Example Use </h4>
+                        <p>
+                    <pre>
+$this->View-><span class="ug-keyword ug-bold">isAvailable</span>("home\index.phtml");
+                    </pre>
+                    <br>
+                    <pre>
+$this->View-><span class="ug-keyword ug-bold">isAvailable</span>("test_folder\index.html", false);
+                    </pre>
+                    <br>
+                    
+                    <pre>
+if($this->View->isAvailable("home/home.phtml"))
+{
+    $this->View->Render("home/home.phtml");
+}else{
+    echo "Page not found";
+}
+                    </pre>
+                        </p>
+                    
+                        <br><br>
+                    
+                        <h4 id="tvbcv">Transfer Variables Between Controllers &amp; Views</h4>
+                        <p>
+                        Let's say you have a indexController.php controller in your 
+                        <span class="ug-code ug-keyword ug-bold">controller</span> directory, 
+                        and you want to set a variable in your view file. There is lots of methods 
+                        to do that like <span class="ug-code ug-file ug-bold">ObjectMapper</span> of 
+                        limeberry Franework, but in classic way you need to define a variable in your 
+                        view file; <br>
+                    <pre>
+
+...HTML CODES
+        <span class="ug-keyword ug-bold"> < ?php echo $this->sayhello; ?> </span>
+...HTML CODES
+                    </pre>
+                    <br> <br>
+                    
+                    And in your controller
+                    <pre>
+use limeberry\Controller As plController;
+
+class indexController extends plController{
+
+    
+    public function IndexAction($param=0)
+    {
+            <span class="ug-keyword ug-bold">$this->View->sayhello = "Hello World :)"; </span>
+            $this->View->Render("test.phtml");
+    }
+}
+                    </pre>
+                        </p>
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

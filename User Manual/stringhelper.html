@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - String Helper Class </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>String Helper Class</h3>
+                        <p>
+                            This is a helper class for strings. It's adds various features to srings
+                        </p>
+
+                          
+
+                    <br>
+                    <h4 id="">Define new String</h4>
+                    <p>
+                        Store a new string data.
+                        <br>
+<pre>
+$name = new String("username");
+</pre> <br>
+                        <br>
+                    </p>
+                    
+
+                    
+                    <br>
+                    <h4 id="">get()</h4>
+                    <p>
+                        Get stored data
+                        <br>
+<pre>
+$name = new String("username");
+$name->get();
+</pre> <br>
+                        <br>
+                    </p>
+                    
+
+                       
+                    <br>
+                    <h4 id="">set()</h4>
+                    <p>
+                       Set new data to variable
+                        <br>
+<pre>
+$name = new String("username");
+$name->set("new updated data");
+</pre> <br>
+                        <br>
+                    </p>
+
+
+    
+                    <br>
+                    <h4 id="">toUpper()</h4>
+                    <p>
+                       Convert stored data to uppercase
+                        <br>
+<pre>
+$name = new String("username");
+$name->toUpper();
+//returns: USERNAME
+</pre> <br>
+                        <br>
+                    </p>
+
+
+
+                    
+                    <br>
+                    <h4 id="">toLower()</h4>
+                    <p>
+                       Convert stored data to lowercase
+                        <br>
+<pre>
+$name = new String("USER");
+$name->toLower();
+//returns: user
+</pre> <br>
+                        <br>
+                    </p>
+
+
+
+
+                    
+                    <br>
+                    <h4 id="">toUpperFirst()</h4>
+                    <p>
+                            Convert stored strings first char to uppercase
+                        <br>
+<pre>
+$name = new String("username");
+$name->toUpperFirst();
+//returns: Username
+</pre> <br>
+                        <br>
+                    </p>
+
+
+
+                    
+                    <br>
+                    <h4 id="">toLowerFirst()</h4>
+                    <p>
+                       Convert stored strings first char to lowercase
+                        <br>
+<pre>
+$name = new String("USER");
+$name->toLowerFirst();
+//returns: uSER
+</pre> <br>
+                        <br>
+                    </p>
+
+ 
+                    <br>
+                    <h4 id="">addPrefix()</h4>
+                    <p>
+                       Adds prefix for each word in string
+                        <br>
+<pre>
+$name = new String("php, mvc, framework");
+$name->addPrefix("updated_", ","); //second parameter is limiter to explode the string
+//returns: updated_php updated_mvc updated_framework
+</pre> <br>
+                        <br>
+                    </p>
+
+
+                    
+                    <br>
+                    <h4 id="">addSuffix()</h4>
+                    <p>
+                       Adds prefix for each word in string
+                        <br>
+<pre>
+$name = new String("php   mvc   framework");
+$name->addSuffix("_used", " "); //second parameter is limiter to explode the string
+//returns: php_used mvc_used framework_used
+</pre> <br>
+                        <br>
+                    </p>
+
+ 
+                    <br>
+                    <h4 id="">addSfxPrx()</h4>
+                    <p>
+                       Adds prefix and suffix for each word in string in the same time
+                        <br>
+<pre>
+$name = new String("php-mvc-framework");
+$name->addSfxPrx("}","{", "-"); //addSfxPrx(suffix, prefix, limiter);
+//returns: {php} {mvc} {framework}
+</pre> <br>
+                        <br>
+                    </p>
+
+
+
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    <br>If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\helpers\String;</span><br>
+                
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

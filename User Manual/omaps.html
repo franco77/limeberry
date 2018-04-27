@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Object Mapper Class </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Object Mapper Class</h3>
+                       
+                        <br>
+                        <ol class="ug-tocs">
+                                <li><a href="#pagedescription">Object Mapper Class</a></li>
+                                <li>Methods
+                                    <ol class="ug-tocs">
+                                    <li><a href="#MapNew">MapNew()</a></li>
+                                    <li><a href="#GetValue">GetValue()</a></li>
+                                    </ol>
+                                </li>
+                                
+                        
+                            </ol>
+                            <br>
+                            <!-- CONTENT START -->
+                        
+                            <br><br>
+                            <h4 id="pagedescription">Object Mapper Class</h4>
+                            <p>
+                            Object mapper tool for limeberry; Use it to map such a configuration to use globally in your code.
+                            Objects can be defined in Application Class / Register() Function or anywhere in your code.
+                            <br>
+                            
+                        
+                            </p>
+                        
+                            <br>
+                        
+                        
+                            <h4 id="MapNew">MapNew()</h4>
+                            <p>
+                            Map new variable for use it globally
+                            <pre>
+ObjectMapper::<span class="ug-method">MapNew</span>(<span class="ug-type">string</span>  $name, <span class="ug-type">mixed</span>  $data) : <span class="ug-type">void</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$name</span>: Name for your value <br>
+                        <span class="ug-keyword ug-code ug-bold">$data</span>: Value
+                        
+                            </p>
+                        
+                                <h4 id="GetValue">GetValue()</h4>
+                            <p>
+                            Get mapped value with ObjectMapper
+                        <pre>
+ObjectMapper::<span class="ug-method">GetValue</span>(<span class="ug-type">string</span>  $name) : <span class="ug-type">mixed</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$name</span>: Name for your value <br>
+                            </p>
+                        
+                        
+                       
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    <br>If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\tool\ObjectMapper;</span>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

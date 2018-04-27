@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Creating Forms </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Creating Forms</h3>
+
+                        <ol class="ug-tocs">
+                                <li><a href="#pagedescription">Form Class</a></li>
+                                <li>Methods
+                                    <ol class="ug-tocs">
+                                        <li><a href="#DefineForm">DefineForm()</a></li>
+                                        <li><a href="#setModel">setModel()</a></li>
+                                        <li><a href="#setElement">setElement()</a></li>
+                                        <li><a href="#FinishForm">FinishForm()</a></li>
+                                        <li><a href="#Call">Call()</a></li>
+                                    </ol>
+                                </li>
+                        
+                                <li><a href="#example">Example</a></li>
+                        
+                                <li><a href="#elements">FormElements Class</a></li>
+                                
+                        
+                            </ol>
+                            <br>
+                            <!-- CONTENT START -->
+                        
+                            <br><br>
+                            <h4 id="pagedescription">Form Class</h4>
+                            <p>
+                            limeberry form is used to get data from user and send the data to model or controller. You can simply create forms and attach a model class to that form to manage user input. Form class is generally used in view files to fill a model class with user inputs. 
+                            <br>
+                            
+                        
+                            </p>
+                        
+                        
+                            <br>
+                        
+                        
+                        
+                            <h4 id="DefineForm">DefineForm()</h4>
+                            <p>
+                            Create a form
+                            <pre>
+$register-><span class="ug-method">DefineForm</span>(<span class="ug-type">Array</span> $attr = null) : <span class="ug-type">String</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$attr</span>: Form attributes<br>
+                            </p>
+                        
+                        
+                        
+                                <h4 id="setModel">setModel()</h4>
+                            <p>
+                            If you did not want to set model in form definition you can set it with this function.
+                            <pre>
+$register-><span class="ug-method">setModel</span>(<span class="ug-type">String</span> $model = "") : <span class="ug-type">void</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$model</span>: Model class name
+                            </p>
+                        
+                        
+                        
+                        
+                        
+                                <h4 id="setElement">setElement()</h4>
+                            <p>
+                            Add input or other elements to your form
+                            <pre>
+$register-><span class="ug-method">setElement</span>(<span class="ug-type">String</span> $element = "") : <span class="ug-type">String</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$element</span>: A form elemnt. You can use <span class="ug-code ug-keyword ug-bold">FormElements Class</span><br>
+                            </p>
+                        
+                        
+                        
+                            <h4 id="FinishForm">FinishForm()</h4>
+                            <p>
+                            All forms started with <span class="ug-method">DefineForm</span> must end with <span class="ug-method">FinishForm</span>
+                            <pre>
+$register-><span class="ug-method">FinishForm</span>() : <span class="ug-type">String</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$relatedModel</span>: Model Class Name to manage input<br>
+                        <span class="ug-keyword ug-code ug-bold">$attr</span>: Form attributes<br>
+                            </p>
+                        
+                        
+                        
+                        
+                            <h4 id="Call">Call()</h4>
+                            <p>
+                            Call a function in a model after form posted.
+                            <pre>
+$register-><span class="ug-method">Call</span>(String $functionName) : <span class="ug-type">String</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$functionName</span>: Name of function in model class to run after form posted.<br>
+                            </p>
+                        
+                        
+                            <div class="alert alert-warning">
+                                          <strong>Warning </strong> limeberry framework fills automatically model class variables from form. You need to set 
+                                          <span class="ug-code ug-bold ug-keyword">name</span> attribute of form, with same name of your variable in model class attached.
+                                          </span>
+                                        </div>
+                        
+                            </p>
+                        
+                        <hr>
+                        
+                        
+                        <h3 id="example">Example</h3>
+                        <p>
+                        Let's say you need the <span class="ug-code ug-file">username</span>, <span class="ug-code ug-file">email</span> and <span class="ug-code ug-file">password</span> of your user for registration. You need to crate a UserModel and a register form for that. <br> <br>
+                        
+                        <b>view\register.php</b>
+                        <br>
+                        <pre>
+use limeberry\page;
+use limeberry\forms\Form;
+use limeberry\forms\FormElements;
+
+$view = new page();
+$register = new Form();
+
+
+$view->SetLayout("master.phtml");
+
+
+$view->BeginContent();
+
+echo $register->DefineForm(array("class"=>"form-group", "method"=>"POST"));
+            $register->setModel("UserModel");
+
+        echo $register->setElement(FormElements::Label("E-mail", "email"));
+        echo $register->setElement(FormElements::TextBox("email", array("class"=>"form-control")));
+    
+        echo $register->setElement(FormElements::Label("Username", "username"));
+        echo $register->setElement(FormElements::TextBox("username", array("class"=>"form-control")));
+    
+        echo $register->setElement(FormElements::Label("Password", "password"));
+        echo $register->setElement(FormElements::Password("password", array("class"=>"form-control")));
+    
+
+    echo $register->setElement(FormElements::Submit("UserModel", array("class"=>"btn btn-success")));
+        $register->Call("SaveUser");
+
+
+
+$view->EndContent(); ?>
+
+</pre>
+                        
+                        <b>model\UserModel.php</b>
+                        <br>
+                        <pre>
+                        
+use limeberry\dataman\Autopulse;
+use limeberry\dataman\MySqlConnect;
+
+
+class UserModel
+{
+public $username;
+public $email;
+public $password;
+
+
+
+public function SaveUser()
+{
+    $con = new mysqlconnect("localhost","root","","papp");
+    $myUser = array("username" => $this->username,
+                    "email"=> $this->email,
+                    "password"=> $this->password);
+    
+    if(Autopulse::LoadArray("users",$myUser,$con->Source()))
+    {
+        echo "< h1> User Registration Completed </ h1>";
+    }else{ 
+            echo "< h1> User Registration ERROR </ h1>";
+    }
+}
+
+                            
+                        </pre>
+                        
+                        
+                        
+                        
+                        <b>Result: </b>
+                        <img src="assets/img/frm-result0.png" style="width: 100%;" >
+                        
+                        </p>
+                        
+                        
+                        <h2 id="elements">FormElements Class </h2>
+                        <p>
+                        <br>
+                        
+                        
+                        
+                        
+                        <h4>TextBox()</h4>
+                        Create TextBox input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::TextBox (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        <h4>FileUpload()</h4>
+                        Create Submit input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::FileUpload (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        <h4>Password()</h4>
+                        Create Password input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Password (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        <h4>Submit()</h4>
+                        Create Submit input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Submit (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        <h4>Reset()</h4>
+                        Create Reset input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Reset (<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        <h4>Radio()</h4>
+                        Create Radio input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Radio (<span class="ug-type">String </span>$fieldName, <span class="ug-type">String </span>$value, <span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        <h4>Checkbox()</h4>
+                        Create Checkbox input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Checkbox (<span class="ug-type">String </span>$fieldName, <span class="ug-type">String </span>$value, <span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        <h4>Button()</h4>
+                        Create Button input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Button (<span class="ug-type">String </span>$fieldName, <span class="ug-type">String </span>$value, <span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        <h4>ColorDialog()</h4>
+                        Create ColorDialog input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::ColorDialog (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        <h4>DateSelect()</h4>
+                        Create DateSelect input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::DateSelect (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        <h4>Email()</h4>
+                        Create Email input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Email (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        <h4>Month()</h4>
+                        Create Month input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Month (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        <h4>Numeric()</h4>
+                        Create Numeric input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Numeric (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        <h4>SearchBox()</h4>
+                        Create Email input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::SearchBox (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        <h4>Phone()</h4>
+                        Create Phone input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Phone (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <h4>Url()</h4>
+                        Create Url input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Url (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        <h4>Time()</h4>
+                        Create Time input element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Time (<span class="ug-type">String </span>$fieldName,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <h4>Label()</h4>
+                        Create Label element in your form.
+                        
+                        <pre>
+<span class="ug-code ug-bold ug-keyword">FormElements</span>::Label (<span class="ug-type">String </span>$text,<span class="ug-type">String </span>$labelFor ,<span class="ug-type">Array </span>$attrb  ) : <span class="ug-type">String </span>
+                        </pre>
+                        
+                        </p>
+                        
+                        
+
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+
+                    <h5>Namespace for Form</h5>
+                    <span class="ug-code ug-bold ug-keyword">limeberry\forms\Form</span>
+                    <br><br>
+
+                    <h5>Namespace for FormElements</h5>
+                    <span class="ug-code ug-bold ug-keyword">limeberry\forms\FormElements</span>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

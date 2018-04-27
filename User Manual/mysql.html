@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Using MySql Database </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                    
+
+	<h3 id="started">Getting Started</h3>
+	<p>
+        Limeberry Framework uses libraries derived from PHP's PDO library for database operations. 
+        There are currently classes for MySQL databases that are frequently preferred by developers.
+         However, limeberry framework supports all databases supported by the PHP PDO plugin. 
+         All you need to do is specify the required connection string at the time the class is derived. 
+         This article is followed by articles describing all these operations and showing the use of the 
+         functions.You can use MySql connections with the MySqlConnect class and use the dbConnect class for 
+         all other PDO-enabled transactions.Once you have successfully defined your connection, you can run 
+         your queries using the <a href="#MySqlCommand">MySqlCommand</a> or <a href="dbconnect.html">dbCommand</a> classes.
+    </p>
+    
+
+                        <h4>Using MySql Database</h4>
+                        <ol class="ug-tocs">
+                                <li><a href="#mysql_cc">Create a Connection</a></li>
+                                <li>Methods
+                                    <ol class="ug-tocs">
+                                        <li><a href="#m-Source">Source()</a></li>
+                                        <li><a href="#m-isConnected">isConnected()</a></li>
+                                        <li><a href="#m-Connection">Connection()</a></li>
+                                        <li><a href="#m-lastError">lastError()</a></li>
+                                        <li><a href="#m-Close">Close()</a></li>
+                                    </ol>
+                                </li>
+                            </ol>
+
+                        <br>
+                        <h4 id="mysqlconnect">MySqlConnect Class</h4>
+	<p>
+		This library is used to manage your mysql connections.
+			
+
+				<br>
+
+				<h4 id="mysql_cc">MySqlConnect: Create a Connection</h4>
+				<p>
+					You can create your connection in construct when you define your database variable.
+
+					<pre>
+$connection = new mysqlconnect($host, $user, $pass, $db, $options);
+					</pre>
+
+					<br>
+					 <span class="ug-type">String</span>  <span class="ug-code ug-keyword ug-bold">$host</span> Host name <br>
+					 <span class="ug-type">String</span>  <span class="ug-code ug-keyword ug-bold">$user</span> Database Username<br>
+					 <span class="ug-type">String</span>  <span class="ug-code ug-keyword ug-bold">$pass</span> Password <br> 
+					 <span class="ug-type">String</span>  <span class="ug-code ug-keyword ug-bold">$db</span> Database Name <br>
+					 <span class="ug-type">Array</span>  <span class="ug-code ug-keyword ug-bold">$options</span> PHP PDO Options, optional. <br>
+					<span></span>
+				</p>
+
+
+				<h4 id="m-Source">MySqlConnect: Source()</h4>
+				<p>
+					This function is used to return an active database connection.
+
+					<pre>
+$connection-><span class="ug-code ug-keyword ug-bold">Source();</span> :  <span class="ug-type"> PDO Connection</span>
+					</pre>
+
+					<br>
+				</p>
+
+
+	<h4 id="m-isConnected">MySqlConnect: isConnected()</h4>
+				<p>
+					Check if connection available
+
+					<pre>
+$connection-><span class="ug-code ug-keyword ug-bold">isConnected();</span> : <span class="ug-type"> boolean</span>
+					</pre>
+
+					<br>
+				</p>
+
+
+	<h4 id="m-Connection">MySqlConnect: Connection()</h4>
+				<p>
+				Create or change a database connection
+
+					<pre>
+$connection-><span class="ug-code ug-keyword ug-bold">Connection</span>(  $host = "localhost",   $user = "root",   $pass = "root",   $db = "",   $options = null) :  <span class="ug-type"> PDO Connection</span>
+					</pre>
+
+					<br>
+					 <span class="ug-type">String</span>  <span class="ug-code ug-keyword ug-bold">$host</span> Host name <br>
+					 <span class="ug-type">String</span>  <span class="ug-code ug-keyword ug-bold">$user</span> Database Username<br>
+					 <span class="ug-type">String</span>  <span class="ug-code ug-keyword ug-bold">$pass</span> Password <br> 
+					 <span class="ug-type">String</span>  <span class="ug-code ug-keyword ug-bold">$db</span> Database Name <br>
+					 <span class="ug-type">Array</span>  <span class="ug-code ug-keyword ug-bold">$options</span> PHP PDO Options, optional. <br>
+					<span></span>
+				</p>
+
+
+	<h4 id="m-lastError">MySqlConnect: lastError()</h4>
+				<p>
+					Returns last error occured when tryong to connect to Mysql database
+
+					<pre>
+$connection-><span class="ug-code ug-keyword ug-bold">lastError();</span> : <span class="ug-type"> mixed</span>
+					</pre>
+
+					<br>
+				</p>
+
+
+
+	<h4 id="m-Close">MySqlConnect: Close()</h4>
+				<p>
+					Close a connection
+					<pre>
+$connection-><span class="ug-code ug-keyword ug-bold">Close();</span> : <span class="ug-type"> boolean</span>
+					</pre>
+
+					<br>
+				</p>
+
+
+
+
+    </p>
+    <br>
+    <hr>
+    <br>
+    
+    <h3 id="MySqlCommand">MySqlCommand Class</h3>
+	<p>
+
+		This library is used to run your queries.<br> 
+
+
+			<ol class="ug-tocs">
+				<li><a href="#cmd-command">Create A Command</a></li>
+				<li>Methods
+					<ol class="ug-tocs">
+						<li><a href="#cmd-SetParameter">SetParameter()</a></li>
+						<li><a href="#cmd-FetchAll">FetchAll()</a></li>
+						<li><a href="#cmd-Fetch">Fetch()</a></li>
+						<li><a href="#cmd-RowCount">RowCount()</a></li>
+						<li><a href="#cmd-LastInsertedID">LastInsertedID()</a></li>
+						<li><a href="#cmd-Execute">Execute()</a></li>
+					
+					</ol>
+				</li>
+			</ol>
+
+
+			<br><br>
+
+
+			
+
+
+				<br>
+				<h3 id="cmd-namespace">MySqlCommand: Create A Command</h3>
+				<p>
+					
+					You need create an instance of MySqlCommand library for your commands. You can define your command when creating 
+					a MySqlCommand instance.
+
+					<pre>
+$cmd = new MySqlCommand(<span class="ug-type">String</span> $command,<span class="ug-type">dbConnect | MySqlConnect </span> $source);
+					</pre>
+					<br> 
+
+					Let's create a mysqlconnection and run a simple query to select all records in Users table.<br> <br>
+<pre>
+ $myconnnection = new <span class="ug-type">DbConnect</span>("mysql:host=localhost; dbname=papp;", "root", "");
+$cmd = new <span class="ug-type">MySqlCommand</span>("select * from user",<span class="ug-code ug-file ug-bold">$myconnnection->Source()</span>);
+$data_set = $cmd->FetchAll();
+</pre>
+
+Now <span class="ug-code ug-keyword ug-bold">$data_set</span> contains our result.
+				</p>
+
+
+
+			<h3 id="cmd-SetParameter">MySqlCommand: SetParameter()</h3>
+			<p>
+				This function is used when you use parameterized queries.
+				<br>
+				<pre>
+SetParameter(  <span class="ug-type">String </span> $param,  <span class="ug-type">String </span>  $value,  $type = null) 
+			</pre>
+
+			<span class="ug-code ug-keyword ug-bold">$param </span>  Parameter name<br>
+			<span class="ug-code ug-keyword ug-bold">$value</span>  Parameter value <br>
+			<span class="ug-code ug-keyword ug-bold">$type</span>  optional PDO::Parameter_TYPE <br>
+			</p>
+
+
+			<h3 id="cmd-FetchAll">MySqlCommand: FetchAll()</h3>
+			<p>
+				Fetch all records from returned query
+				<br>
+<pre>
+FetchAll()  : <span class="ug-type">Array </span>
+</pre>
+
+			</p>
+
+				<h3 id="cmd-Fetch">MySqlCommand: Fetch()</h3>
+			<p>
+				Fetch single record from returned query
+				<br>
+<pre>
+Fetch()  : <span class="ug-type">Array </span>
+</pre>
+			</p>
+
+			<h3 id="cmd-RowCount">MySqlCommand: RowCount()</h3>
+			<p>
+				count all affected rows
+				<br>
+<pre>
+RowCount()  : <span class="ug-type">integer </span>
+</pre>
+			</p>
+
+		    <h3 id="cmd-LastInsertedID">MySqlCommand: LastInsertedID()</h3>
+			<p> 
+			Returns last inserted id
+				<br>
+<pre>
+RowCount()  : <span class="ug-type">mixed </span>
+</pre>
+			</p>
+
+
+		    <h3 id="cmd-Execute">MySqlCommand: Execute()</h3>
+			<p> 
+			Execute the command in constructor. 
+				<br>
+<pre>
+Execute()  : <span class="ug-type">boolean </span>
+</pre>
+			</p>
+
+
+
+
+
+	</p>
+
+
+    
+
+	<hr>
+	<h2>Examples</h2>
+
+	<h3 id="ex_1">Using ObjectMappers</h3>
+	<p>
+		The database connections may also change during the application's development process. Instead of searching the entire code for changed information every time, you can use the ObjectMapper class to define as many connections as you want and control them from a single point.As mentioned in previous articles, the limeberry Framework's Register function is triggered when app starts. <br><br>
+
+		Based on this information, let us define our connection.<br>
+
+		Open; <span class="ug-code ug-keyword">project_folder/<span class="ug-bold ug-folder">app_config.php</span></span> and add these lines to <code>Register()</code> function in Application class.
+		<pre>
+use limeberry\tool\ObjectMapper As omap;
+.
+.
+.
+.
+.
+.
+
+
+public function Register()
+{
+		omap::MapNew("database_1",
+                        array("host"=>"localhost",
+                              "database"=>"papp",
+                              "user"=>"root",
+                              "password"=>"myDB_password",
+                              "options"=>null));
+}
+
+		</pre>
+
+
+
+		<br> <br>
+
+
+		Thats all. Let's say we have a Auth controller and LoginAction, and we need to connect our database in AuthController.php controller. Open; <span class="ug-code ug-keyword">project_folder/controller/<span class="ug-bold ug-folder">AuthController.php</span></span> and do the following;
+
+<pre>
+
+use limeberry\controller As plController;
+use limeberry\dataman\MySqlConnect;
+use limeberry\dataman\MySqlCommand;
+use limeberry\tool\ObjectMapper as omap;
+
+class AuthController extends plController{
+
+ 
+	public function IndexAction($param=0)
+	{
+           $cons = omap::GetValue("database_1");
+           $myconnnection = new MySqlConnect($cons["host"],$cons["user"],$cons["password"],$cons["database"]);
+           $cmd = new MySqlCommand("select * from user",$myconnnection->Source());
+           $data_set = $cmd->FetchAll();
+           var_dump($data_set);
+            
+            
+            $this->View->Render("Login.phtml");
+	}
+}
+            
+</pre> 
+
+
+
+	</p>
+
+
+
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    <br>If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\dataman\MySqlConnect;</span>
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\dataman\MySqlCommand;</span>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

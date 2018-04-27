@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - HTML Tags Class</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>HTML Tags Class</h3>
+ 
+                        <br><br>
+                        <h4 id="pagedescription">HTML Tags Class</h4>
+                        <p>
+                        You can use HTML tags class for html elements on view files. All functions in this class returns string.
+                        <br>
+                        
+                    
+                        </p>
+                    
+            
+                    
+                        <br>
+                    
+                      <h4>HTML Class: ul &amp; ol Tag</h4>
+                                        <p>
+                    
+                <pre>
+use limeberry\visual\tags;
+$htag = new  tags();
+echo $htag->ul()
+                ->li("PHP")
+                ->li("C#")
+                ->li("VB")
+                ->li("Ruby")
+        ->Create();
+                    
+                                        </pre>
+                    
+                    
+                    
+                                        <br>
+                    
+                                        <pre>
+use limeberry\visual\tags;
+$htag = new  tags();
+echo $htag->ol()
+                ->li("PHP",array("id"=>"id-1"))
+                ->li("C")
+                ->li("VB")
+                ->li("Ruby")
+        ->Create();
+
+                                        </pre>
+                                        </p>
+                    
+                    
+                                         <h4>HTML Class: select Tag</h4>
+                                        <p>
+                                        <pre>
+        use limeberry\visual\tags;
+$htag = new  tags();
+echo $htag->select()
+    ->OptGroup("Programming Languages")
+        ->option("PHP")
+        ->option("C#")
+        ->option("VB")
+        ->option("Ruby")
+    ->OptGroup("Languages")
+        ->option("Greek")
+        ->option("Turkish")
+        ->Option("English")
+->Create();
+                                        </pre>
+                    
+                                        <br>
+                                        Select example with attributes
+
+                <pre>
+use limeberry\visual\tags;
+$htag = new  tags();
+echo $htag->select()
+            ->OptGroup("Programming Languages")
+                ->option("PHP", array("id"=>"1"))
+                ->option("C#", array("id"=>"2", "class"=>"important"))
+                ->option("VB", array("id"=>"3"))
+                ->option("Ruby", array("id"=>"4"))
+            ->OptGroup("Languages")
+                ->option("Greek")
+                ->option("Turkish")
+                ->Option("English")
+        ->Create();
+                </pre>
+                                        </p>
+                    
+                                        <h4>HTML Class: dl Tag</h4>
+                                        <p>
+                                        Simple description list example.
+                                        <br>
+                    
+<pre>
+use limeberry\visual\tags;
+$htag = new  tags();
+echo $htag->dl()->dt("Programming Languages")
+->dd("PHP")
+->dd("C++")
+->dd("Visual Basic")
+->dt("Languages")
+->dd("English")
+->dd("Turkish")
+->dd("Greek")
+->Create();
+
+                                        </pre><br> <br>
+                    
+                                        description list with attributes
+                    
+                                        <pre>
+use limeberry\visual\tags;
+$htag = new  tags();
+echo $htag->dl(array("class"=>"dl-class-css"))->dt("Programming Languages")
+->dd("PHP", array("id"=>"prog_lang-1"))
+->dd("C++", array("class"=>"important"))
+->dd("Visual Basic")
+->dt("Languages")
+->dd("English")
+->dd("Turkish", array("class"=>"selected-css-class"))
+->dd("Greek")
+->Create();
+</pre>
+                                        </p>
+                    
+                                         <h4>All Functions For HTML Tags</h4>
+                                         <p>
+                                            All function names based on html tag. You can simply use all functions like: <b>echo $html_class->Br();</b>
+                                         </p>
+                    
+                    
+                                         <br> <br>
+                                         <br>
+                    
+                                         <code>function A($text=null, $url=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Abbr($text=null, $title=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function PrintCustom($txt)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Audio($source=null, $type=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Br()  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Button($name=null, $on_clik=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Code($text=null, $attrb=null) </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Em($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function strong($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function samp($text=null, $attrb=null) </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function span($text=null, $attrb=null) </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function kbd($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function embed($src=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function H1($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function H2($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function H3($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function H4($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function H5($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function H6($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function H1($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Hr()  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function I($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function U($text=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Img($src=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Meter($value=0, $text="display text", $attrb=null)  </code> <b>Return <span style="color:blue">string</span><br>
+                                         <code>function Progress($value=0, $max="100", $attrb=null)  </code> <b>Return <span style="color:blue">string</span></b><br>
+                                         <code>function Img($src=null, $attrb=null)  </code> <b>Return <span style="color:blue">string</span><br> </b>
+
+                                        <h4>Example</h4>
+                                        <p>
+                    <pre>
+use limeberry\visual\tags;
+$htag = new  tags();
+
+echo $htag->H2("Welcome");
+echo $htag->Hr();
+echo $htag->span("We are testing limeberry framework HTML Tags Class, please click button below for a message box");
+echo $htag->Br();
+echo $htag->Button("Hello World", "alert('Hello World')");
+</pre>
+                                        </p>
+                    
+                    
+                    
+                    
+                                       
+                    
+                        <!-- ./ END CONTENT -->
+                        <br><br><br>
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    
+                   <br> If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                   <br><br> <span>use <span class="ug-code ug-keyword ug-bold">limeberry\visual\Tags;</span><br>
+                
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

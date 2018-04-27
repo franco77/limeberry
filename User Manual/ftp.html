@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - FTP Class </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                    <h3>FTP Class</h3>
+                    <ol class="ug-tocs">
+                    <li><a href="#pagedescription">FTP Class</a></li>
+                    <li>Methods
+                        <ol class="ug-tocs">
+                            <li> <a href="ftp.html#__construct"><code>__construct()</code> </a></li>
+                            <li> <a href="ftp.html#Connect"><code>Connect()</code> </a></li>
+                            <li> <a href="ftp.html#Close"><code>Close()</code> </a></li>
+                            <li> <a href="ftp.html#Error"><code>Error()</code> </a></li>
+                            <li> <a href="ftp.html#Download"><code>Download()</code> </a></li>
+                            <li> <a href="ftp.html#Upload"><code>Upload()</code> </a></li>
+                            <li> <a href="ftp.html#Rename"><code>Rename()</code> </a></li>
+                            <li> <a href="ftp.html#DeleteFile"><code>DeleteFile()</code> </a></li>
+                            <li> <a href="ftp.html#FileSize"><code>FileSize()</code> </a></li>
+                            <li> <a href="ftp.html#DeleteDirectory"><code>DeleteDirectory()</code> </a></li>
+                            <li> <a href="ftp.html#DirectoryList"><code>DirectoryList()</code> </a></li>
+                            <li> <a href="ftp.html#CreateDirectory"><code>CreateDirectory()</code> </a></li>
+                            <li> <a href="ftp.html#SetPermission"><code>SetPermission()</code></a></li>
+                        </ol>
+                    </li>
+
+                    </ol>
+                <br>
+                <!-- CONTENT START -->
+
+                <br><br>
+                <h3 id="pagedescription">FTP Class</h3>
+                <p>
+                You can use limeberry framework's ftp class to connect to a ftp server.
+                <br>
+
+
+                </p>
+
+                <br>
+
+
+
+                <h3 id="__construct">__construct</h3>
+                <p>
+                Initialize ftp class
+
+<pre>
+
+use limeberry\tool\ftp as limeberry_ftp;
+<b>$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);</b>
+</pre>
+                            @param string Ftp Host<br>
+                            @param string Ftp account user<br>
+                            @param string Ftp account password<br>
+                            @param int Ftp port, default 21<br>
+                            @param int Ftp connection time out, default 100<br>
+                                    
+                                    </p>
+
+                                    <h3 id="Connect">Connect</h3>
+                                    <p>
+                                    Connect to ftp.
+                                    @return bool
+                                    
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+<b>$myftp->Connect();</b>
+
+</pre>
+                                    
+                </p>
+
+                <h3 id="Close">Close</h3>
+                <p>
+                
+                Close the ftp connection.
+                @return void
+                                    
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+<b>$myftp->Close();</b>
+</pre>
+
+
+                </p>
+
+                <h3 id="Error">Error</h3>
+                <p>
+                Returns last error of ftp action as String. 
+
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+<b>echo $myftp->Error(); </b>
+$myftp->Close();
+
+
+</pre>
+                </p>
+
+                <h3 id="Download">Download</h3>
+                <p>
+                        
+                Download a file from ftp server.<br>
+                @param string Local file path for download<br>
+                @param string Remote path and file<br>
+                @return bool<br>
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+<b>$myftp->Download("C:\downloads\readme.txt", public_html\w\read_.txt);</b>
+$myftp->Close();
+</pre>
+                    </p>
+
+                    <h3 id="Upload">Upload</h3>
+                    <p>
+                    Upload a file to ftp server<br>
+                    @param string Remote file path for upload<br>
+                    @param string Local file path<br>
+                    @return bool<br>
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+<b>$myftp->Upload("public_html\w\read_.txt","C:\downloads\readme.txt");</b>
+$myftp->Close();
+</pre>
+                                    </p>
+
+                <h3 id="Rename">Rename</h3>
+                <p>
+                 Rename a file.<br>
+                @param string Old name of file<br>
+                @param string New name for file<br>
+                @return bool<br>
+
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+<b>$myftp->Rename("public_html\w\read_.txt","public_html\w\readme_file_renamed.txt");</b>
+$myftp->Close();
+</pre>
+                                    </p>
+
+            <h3 id="DeleteFile">DeleteFile</h3>
+            <p>
+                Delete a file.<br>
+
+                @param string File name<br>
+
+                @return bool<br>
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+<b>$myftp->Delete("public_html\w\read_.txt");</b>
+$myftp->Close();
+</pre>
+
+                        
+            </p>
+
+            <h3 id="FileSize">FileSize</h3>
+            <p>Size of file<br>
+                @param string file name<br>
+                @return float<br>
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+echo <b>$myftp->FileSize("public_html\w\read_.txt");</b>
+$myftp->Close();
+</pre>
+                                    </p>
+
+                    <h3 id="DeleteDirectory">DeleteDirectory</h3>
+                    <p>
+                    <p>Delete a directory from remote ftp server<br>
+                    @param string directory name<br>
+                    @return bool<br>
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+<b>$myftp->DeleteDirectory("public_html\web_app");</b>
+$myftp->Close();
+</pre>
+                                    </p>
+
+                    <h3 id="DirectoryList">DirectoryList</h3>
+                    <p>
+                    Directory listing<br>
+                    @param string Destination directory path<br>
+                    @return array<br>
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+var_dump( <b>$myftp->DirectoryList("public_html\web_app")</b>); 
+$myftp->Close();
+</pre>
+
+
+                </p>
+
+                <h3 id="CreateDirectory">CreateDirectory</h3>
+                <p>
+                    Create a new directory on ftp server.<br>
+                @param string Directory name <br>
+                @return bool<br>
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+<b>$myftp->CreateDirectory("public_html\web_app\updated");</b>
+$myftp->Close();
+</pre>
+                                    </p>
+
+
+
+                                        <h3 id="SetPermission">SetPermission</h3>
+                                    <p>
+                                    Change permission for file<br>
+                            @param string Destination file path and file name<br>
+                            @param int permissions<br>
+                            @return bool<br>
+<pre>
+use limeberry\tool\ftp as limeberry_ftp;
+$myftp = new limeberry_ftp($host,$user,$password, $port= 21, $timeout);
+$myftp->Connect();
+//your ftp operations...
+//...
+<b>$myftp->SetPermission("public_html\web_app\test.html", 747);</b>
+$myftp->Close();
+</pre>
+                    
+                                       
+                                        </p>
+                        <!-- ./ END CONTENT -->
+                        <br><br><br>
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    <br>If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\tool\Ftp;</span><br>
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

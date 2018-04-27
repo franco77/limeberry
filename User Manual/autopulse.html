@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Autopulse Library </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Autopulse; A simple CRUD Class</h3>
+                       
+
+                        <ol class="ug-tocs">
+                            <li><a href="#pagedescription">Autopulse Library</a></li>
+                            <li>Methods
+                                <ol class="ug-tocs">
+                                <li><a href="#LoadModel">LoadModel()</a></li>
+                                <li><a href="#LoadArray">LoadArray()</a></li>
+                                <li><a href="#Update">Update()</a></li>
+                                <li><a href="#Delete">Delete()</a></li>
+                                <li><a href="#DeleteWithModel">DeleteWithModel()</a></li>
+                    
+                                
+                                </ol>
+                            </li>
+                            <li><a href="#example">Example</a></li>
+                            
+                    
+                        </ol>
+                        <br>
+                        <!-- CONTENT START -->
+                    
+                        <br><br>
+                        <h4 id="pagedescription">Database: Autopulse Library</h4>
+                        <p>
+                        With this library you can easily access and manage your database.
+                    <br><br>
+                    This class, contains functions that make it easier to process your data. AutoPulse will save you writing complex dml queries. The only think you need is to call required function.
+                        <br>
+                        
+                    
+                        </p>
+                    
+                    
+                        
+                    
+                        <br>
+                    
+                    
+                    
+                        <h3 id="LoadModel">LoadModel()</h3>
+                        <p>
+                        This function is used to load a model class directly to your database.
+                        <pre>
+Autopulse::<span class="ug-method">LoadModel</span>(<span class="ug-type">Mixed</span> $modelForm, <span class="ug-type">DbConnect | MySqlConnect</span>  $dbclassinstance);
+                    </pre><br>
+                    <span class="ug-keyword ug-code ug-bold">$modelForm</span>: Model class posted from view <br>
+                    <span class="ug-keyword ug-code ug-bold">$dbclassinstance</span>: An active database connection source.
+                    
+                    
+                        <div class="alert alert-warning">
+                                      <strong>Warning </strong> If you want to use LoadModel method, your model Class name must be same with your table name and variables defined in model class must be same with column names in your table.</span>
+                                    </div>
+                    
+                        </p>
+                    
+                    
+                    
+                    
+                        <h3 id="LoadArray">LoadArray()</h3>
+                        <p>
+                        This function is used to load an array to your database.
+                        <pre>
+Autopulse::<span class="ug-method">LoadArray</span>(<span class="ug-type">String</span>  $tableName = '', <span class="ug-type">Array</span>  $fieldList,  <span class="ug-type">DbConnect | MySqlConnect</span>  $dbclassinstance);
+                    
+                    </pre><br>
+                    <span class="ug-keyword ug-code ug-bold">$tableName</span>: Table name <br>
+                    <span class="ug-keyword ug-code ug-bold">$fieldList</span>: Fields with values. array key must be column name of table.<br>
+                    <span class="ug-keyword ug-code ug-bold">$dbclassinstance</span>: An active database connection source.<br>
+                        </p>
+                    
+                    
+                            <h3 id="Update">Update()</h3>
+                        <p>
+                        Update a data using arrays
+                        <pre>
+Autopulse::<span class="ug-method">Update</span>(<span class="ug-type">Mixed</span>   $tableName, <span class="ug-type">Array</span>   $fieldList = null, <span class="ug-type">String</span>   $whereOption = null,   <span class="ug-type">DbConnect | MySqlConnect</span> $dbclassinstance);
+                    
+                    </pre><br>
+                    <span class="ug-keyword ug-code ug-bold">$tableName</span>: Table name to update. <br>
+                    <span class="ug-keyword ug-code ug-bold">$fieldList</span>: Fields with values. array key must be column name of table.<br>
+                    <span class="ug-keyword ug-code ug-bold">$whereOption</span>: Update where...<br>
+                    <span class="ug-keyword ug-code ug-bold">$dbclassinstance</span>: An active database connection source.<br>
+                        </p>
+                        
+                    
+                    
+                        
+                        <h3 id="Delet">Delete()</h3>
+                        <p>
+                        Delete from database
+                        <pre>
+Autopulse::<span class="ug-method">Delete</span>(<span class="ug-type">Mixed</span>   $TableName, <span class="ug-type">DbConnect | MySqlConnect</span> $dbclassinstance,<span class="ug-type">String</span>   $whereOption = null);
+                    
+                    </pre><br>
+                    <span class="ug-keyword ug-code ug-bold">$TableName</span>: Table name to delete from. <br>
+                    <span class="ug-keyword ug-code ug-bold">$whereOption</span>: Update where...<br>
+                    <span class="ug-keyword ug-code ug-bold">$dbclassinstance</span>: An active database connection source.<br>
+                        </p>
+                        
+
+                    
+                        <h3 id="DeleteWithModel">DeleteWithModel()</h3>
+                        <p>
+                        Delete from database
+                        <pre>
+Autopulse::<span class="ug-method">Delete</span>(<span class="ug-type">Mixed</span>   $modelForm, <span class="ug-type">DbConnect | MySqlConnect</span> $dbclassinstance,<span class="ug-type">String</span>   $whereOption = null);
+                    
+                    </pre><br>
+                    <span class="ug-keyword ug-code ug-bold">$modelForm</span>: Model Form, Autopulse library use this for getting table name from class name. <br>
+                    <span class="ug-keyword ug-code ug-bold">$whereOption</span>: Update where...<br>
+                    <span class="ug-keyword ug-code ug-bold">$dbclassinstance</span>: An active database connection source.<br>
+                        </p>
+                        
+                    
+                        <h3 id="example">Example</h3>
+                        <p>
+                        Let's create a Autopulse command to insert an array to "User" table.
+                    
+                    <pre>
+    use limeberry\dataman\Autopulse;
+    ..
+    ..
+    ..
+    ..
+    
+    
+        $cons = omap::GetValue("database_1");
+            
+                $myconnnection = new mysqlconnect($cons["host"],$cons["user"],$cons["password"],$cons["database"]);
+                $myUser = array("userid"=>null,
+                                "name"=>"Example",
+                                "surname"=>"RECORD",
+                                "email"=>"test@test.com");
+                
+                if(Autopulse::LoadArray("user", $myUser, $myconnnection->Source()))
+                {
+                    echo "User Saved";
+                }else{
+                    echo "Error while saving user";
+                }
+                    </pre>
+                        </p>
+                        
+                    
+                    
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    <br>If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\dataman\Autopulse;</span><br>
+                    <br>
+                    <div class="alert alert-info">
+                                  <strong>Database Connection </strong> All methods and commands in this library requires an active database connection. You can define your connection witg MySqlConnect or DbConnect class. You can read more about
+                                  connecting a database <a href="mysql.html">Here </a> or <a href="dbconnect.html">Here </a> </span>
+                                </div>
+                
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Project Configuration </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Project Configuration</h3>
+                       
+                        <br>
+                        <ol class="ug-tocs">
+                            <li><a href="#entry">Application Class &amp; Register() Function</a></li>
+                            <li>Methods
+                                    <ol class="ug-tocs">
+                                    <li><a href="#setEnvironment">setEnvironment()</a></li>
+                                    <li><a href="#setApplicationFolder">setApplicationFolder() &amp; getApplicationFolder</a></li>
+                                    <li><a href="#setRoot">setRoot() &amp; isRoot()</a></li>
+                                    <li><a href="#setApplicationUrl">setApplicationUrl() &amp; getApplicationUrl() </a></li>
+                                    <li><a href="#setUrlProtected">setUrlProtected() &amp; isUrlProtected() </a></li>
+                                    <li><a href="#UnwantedParameters">UnwantedParameters() </a></li>
+                                    
+                                    </ol>
+                    
+                                <li>Methods for Owning an Application
+                                    <ol class="ug-tocs">
+                                        <li><a href="#setTitle">setTitle()  &amp; getTitle()</a></li>
+                                        <li><a href="#setVersion">setVersion &amp; getVersion()</a></li>
+                                        <li><a href="#setDescription">setDescription() &amp; getDescription </a></li>
+                                    </ol>
+                                </li>
+                            </li>
+                            <li><a href="#example">Example app_config.php </a></li>
+                        </ol>
+                        <br>
+                        <!-- CONTENT START -->
+                    
+                        <br><br>
+                        <h4 id="entry">Application Class &amp; Register() Function</h4>
+                        <p>
+                        Application Class is an entry point for your code, after the installation of core 
+                        framework modules the function(s) in this class will be run. You must define this 
+                        class in a configuration file and only acceptable and auto run function is Register() 
+                        function. This function is to register globally variables, set object mappers, set pin 
+                        checkers etc.
+                        </p>
+                    
+                        <br>
+                        <h4 id="setEnvironment">setEnvironment()</h4>
+                        <p>
+                        This function is used to set development environment.
+                    <pre>
+Configuration::<span class="ug-method">setEnvironment</span>(<span class="ug-type">string</span>  $prm_env);
+                    </pre>
+                    Accepted values: "development", "publish", "default" <br>
+                    <span class="ug-code ug-keyword">$prm_env</span> one of the accepted values
+                        </p>
+                    
+                    
+                    <br>
+                        <h4 id="setApplicationFolder">setApplicationFolder() &amp; getApplicationFolder</h4>
+                        <p>
+                        This function is used to set application folder for limeberry frameworks current config.
+                    <pre>
+Configuration::<span class="ug-method">setApplicationFolder</span>(<span class="ug-type">string</span>  $prm);
+                    </pre>
+                    
+                        you can use getApplicationFolder to return this value;<br>
+                    <pre>
+Configuration::<span class="ug-method">getApplicationFolder</span>() : <span class="ug-type">string</span>
+                    </pre>
+                    
+                        </p>
+                    
+                    
+                    
+                    <br>
+                        <h4 id="setRoot">setRoot() &amp; isRoot()</h4>
+                        <p>
+                        This function is used to determine if your application in server is in root directory or not. Set true if your app will run in root directory
+                    <pre>
+Configuration::<span class="ug-method">setRoot</span>(<span class="ug-type">boolean</span>  $prm);
+                    </pre>
+                    
+                        you can use isRoot() to check the option;<br>
+                    <pre>
+Configuration::<span class="ug-method">isRoot</span>() : <span class="ug-type">boolean</span>
+                    </pre>
+                    
+                        </p>
+                    
+                    
+                    
+                    
+                    <br>
+                        <h4 id="setApplicationUrl">setApplicationUrl() &amp; getApplicationUrl()</h4>
+                        <p>
+                        This function is very important, when you use response and route class your redirect url will be get from here.
+                    <pre>
+Configuration::<span class="ug-method">setApplicationUrl</span>(<span class="ug-type">string</span>  $prm="http://localhost/");
+                    </pre>
+                    
+                        you can use getApplicationUrl() to return this value;<br>
+                    
+                    <pre>
+Configuration::<span class="ug-method">getApplicationUrl</span>() : <span class="ug-type">string</span>
+                    </pre>
+                    
+                        </p>
+                    
+                    
+                    
+                    
+                    <br>
+                        <h4 id="setUrlProtected">setUrlProtected() &amp; isUrlProtected()</h4>
+                        <p>
+                        This function is used to prevent web site from unwanted url parameters.
+                    <pre>
+Configuration::<span class="ug-method">setUrlProtected</span>(<span class="ug-type">boolean</span>  $prm);
+                    </pre>
+                    
+                        <br>
+                        This is a security setting. This setting must be activated in order to protect your web address from the parameters you do not want, and these special characters must be set by the method that follows <br>
+                    
+                        <br>
+                        You can check if this option is enabled with the following command;<br>
+                        <pre>
+Configuration::<span class="ug-method">isUrlProtected</span>(); : <span class="ug-type">boolean</span>
+                    </pre>
+                    
+                    </p>
+                    
+                    
+                    <br>
+                        <h4 id="UnwantedParameters">UnwantedParameters()</h4>
+                        <p>
+                        Set an array for unwanted characters or words
+                    <pre>
+Configuration::<span class="ug-method">UnwantedParameters</span>(<span class="ug-type">array</span>  $prm);
+                    </pre>
+                    
+                        <br>
+                        EXAMPLE:<br>
+                        <span class="ug-code">Configuration::<span class="ug-method">UnwantedParameters</span>(<span class="ug-type">array</span>("'", "_", "HACK")); </span>
+                        
+                        That means if your website gets visited with one of this three parameters user will be redirected.
+                    </p>
+                    
+                    
+                    <br>
+                    
+                    
+                    
+                    <h3 id="ownmethods"> Methods for owning an Application</h3>
+                    <br>
+                        <h4 id="setTitle">setTitle() &amp; getTitle()</h4>
+                        <p>
+                        This function is used to set a title/name for your project.
+                    <pre>
+Configuration::<span class="ug-method">setTitle</span>(<span class="ug-type">string</span>  $prm);
+                    </pre>
+                    
+                        
+                        <br>
+                        Get the value with<br>
+                        <pre>
+Configuration::<span class="ug-method">getTitle</span>(); : <span class="ug-type">string</span>
+                    </pre>
+                    
+                    </p>
+                    
+                    
+                    <br>
+                        <h4 id="setVersion">setVersion() &amp; getVersion()</h4>
+                        <p>
+                        This function is used to set a version numer for your project.
+                    <pre>
+Configuration::<span class="ug-method">setVersion</span>(<span class="ug-type">string</span>  $prm);
+                    </pre>
+                    
+                        
+                        <br>
+                        Get the value with<br>
+                        <pre>
+Configuration::<span class="ug-method">getVersion</span>(); : <span class="ug-type">string</span>
+                    </pre>
+                    
+                    </p>
+                    
+                    
+                    
+                    
+                    
+                    <br>
+                        <h4 id="setDescription">setDescription() &amp; getDescription()</h4>
+                        <p>
+                        This function is used to set a version numer for your project.
+                    <pre>
+Configuration::<span class="ug-method">setDescription</span>(<span class="ug-type">string</span>  $prm);
+                    </pre>
+                    
+                        
+                        <br>
+                        Get the value with<br>
+                        <pre>
+Configuration::<span class="ug-method">getDescription</span>(); : <span class="ug-type">string</span>
+                    </pre>
+                    
+                    </p>
+                    
+                    
+                    <br>
+                        <h3 id="example">Example app_config.php</h3>
+                    
+                    <pre>
+use limeberry\Configuration;
+
+/**
+*	=== [Environment Configuration ] ===
+*	This configuration is used to set the 
+*	development environment for your project.
+*	You can set 2 types of environments;
+*	"development" OR "publish"
+**/
+configuration::setEnvironment("development");
+
+
+
+/**
+*	=== [Application Folder ] ===
+*	This configuration is generally for security.
+*	If you need to change the folder name of your
+*	application you must set it here.
+**/
+configuration::setApplicationFolder("application");
+
+
+/**
+*	=== [Application URL ] ===
+*	This configuration is used to set your
+*	web sites url. For example if you create a
+*	application that will be run in root set url to: "http://www.examplesite.com/"
+*	If your application will be a sub module/application of other application set it like:
+*	 "http://www.examplesite.com/my_module". 
+**/
+configuration::setApplicationUrl("http://localhost/limeberry");
+
+/**
+*	=== [Is Application Root ] ===
+*	If your application's url is not accessable by "www.siteexample.com"
+*	set this false. 
+**/
+configuration::setRoot(false);
+
+
+/**
+*      === [ Application Name ] ===
+*      This configuration is used to set name of your application.
+*/
+configuration::setTitle("Empty Limeberry Application");
+
+/**
+*      === [ Application Version ] ===
+*      This configuration is used to set version number of your application.
+*/
+configuration::setVersion("1.0.0");
+
+/**
+*      === [ Application Description ] ===
+*      This configuration is used to set description of your application.
+*/
+configuration::setDescription("My default Limeberry framework application");
+
+
+configuration::setUrlProtected(true);
+configuration::UnwantedParameters(array("'", "^", "&", "%"));
+
+/***********************************************
+*	Application Class
+*/
+class Application
+{
+
+        /**
+        * This function is called automatically by framework on entry...
+        * You can do all your global object definitions or user-based settings...
+        */
+        public function Register()
+        {
+            
+        }
+
+}
+
+                    </pre>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                       
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    <br>
+
+                    If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                    
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\Configuration;</span><br>
+
+                    
+                    
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

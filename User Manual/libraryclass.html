@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Loading and running 3rd party php files </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Loading and running 3rd party php files</h3>
+                           <br>
+                           <ol class="ug-tocs">
+                                <li><a href="#pagedescription">Library Class</a></li>
+                                <li>Methods
+                                    <ol class="ug-tocs">
+                                    <li><a href="#Load">Load()</a></li>
+                                    <li><a href="#LoadConfig">LoadConfig()</a></li>
+                                    <li><a href="#isAvailable">isAvailable()</a></li>
+                                    </ol>
+                                </li>
+                                <li><a href="#example">Example</a></li>
+                        
+                            </ol>
+                            <br>
+                            <!-- CONTENT START -->
+                        
+                            <br><br>
+                            <h4 id="pagedescription">Library Class</h4>
+                            <p>
+                            Library class is used to include third party class and code files to your project. It is simply a replacement for php's include and require functions.
+                            <br>
+                            
+                        
+                            </p>
+                        
+                        
+                            <br>
+                        
+                        
+                        
+                        
+                        
+                            <h4 id="Load">Load()</h4>
+                            <p>
+                            Loads a third party class. (Class must be in <span class="ug-bold ug-folder ug-code">library</span> folder)
+                            <pre>
+Library::<span class="ug-method">Load</span>(<span class="ug-type">string</span>  $filename, <span class="ug-type">IncludeType</span>  $type) : <span class="ug-type">void</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$filename</span>: filename in 'library' directory<br>
+                        <span class="ug-keyword ug-code ug-bold">$type</span>:  <span class="ug-bold ug-keyword">ModeRequire</span>, 
+                                                <span class="ug-bold ug-keyword">ModeRequireOnce </span>, 
+                                               <span class="ug-bold ug-keyword"> ModeInclude</span>, 
+                                               <span class="ug-bold ug-keyword"> ModeIncludeOnce </span>, 
+                                                <span class="ug-bold ug-keyword"> ModeDefault</span>
+                        
+                            </p>
+                        
+                        
+                        
+                        
+                        
+                        
+                            <h4 id="LoadConfig">LoadConfig()</h4>
+                            <p>Loads a limeberry configuration file
+                            <pre>
+Library::<span class="ug-method">LoadConfig</span>(<span class="ug-type">string</span>  $filename, <span class="ug-type">IncludeType</span>  $type) : <span class="ug-type">void</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$filename</span>: filename ex; 'path\file.php'<br>
+                        <span class="ug-keyword ug-code ug-bold">$type</span>:  <span class="ug-bold ug-keyword">ModeRequire</span>, 
+                                                <span class="ug-bold ug-keyword">ModeRequireOnce </span>, 
+                                               <span class="ug-bold ug-keyword"> ModeInclude</span>, 
+                                               <span class="ug-bold ug-keyword"> ModeIncludeOnce </span>, 
+                                                <span class="ug-bold ug-keyword"> ModeDefault</span>
+                        
+                            </p>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                            <h4 id="isAvailable">isAvailable()</h4>
+                            <p>Checks if file is available
+                        
+                            <pre>
+Library::<span class="ug-method">isAvailable</span>(<span class="ug-type">string</span>  $filenam) : <span class="ug-type">boolean</span>
+                        </pre><br>
+                        <span class="ug-keyword ug-code ug-bold">$filename</span>: filename ex; 'path\file.php'<br>
+                            </p>
+                        
+                        
+                        
+                        
+                        <h3 id="example">Example</h3>
+                        
+                        <p>
+                        <pre>
+                        
+if(Library::isAvailable('library\bcrypt.php'))
+{
+    Library::Load("bcrypt.php");
+}
+                        </pre>
+                        </p>
+                        
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                        <br>If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                        <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\tool\Library;</span><br>
+                    
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

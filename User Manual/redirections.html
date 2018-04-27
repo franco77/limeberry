@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Redirection &amp; Url </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3> Redirection &amp; Url</h3>
+                       
+                        <br>
+                        <ol class="ug-tocs">
+                            <li><a href="#pagedescription">Routes &amp; Redirections</a></li>
+                            <li>Methods
+                                <ol class="ug-tocs">
+                                <li><a href="#Redirect">Redirect()</a></li>
+                                <li><a href="#RedirectToAction">RedirectToAction()</a></li>
+                                <li><a href="#AreaRedirection">AreaRedirection()</a></li>
+                                <li><a href="#example_use">Example; Use In Controllers</a></li>
+                                <li><a href="#GetData">GetData()</a></li>
+                                <li><a href="#GetUrl">GetUrl()</a></li>
+                                </ol>
+                            </li>
+                    
+                            <li><a href="#route_class">Route Class</a></li>
+                            
+                    
+                        </ol>
+                        <br>
+                        <!-- CONTENT START -->
+                    
+                        <br><br>
+                        <h3 id="pagedescription">Routes &amp; Redirections</h3>
+                        <p>
+                        limeberry framework uses controllers to map your routes. You does not required to 
+                        specify routes when you codding your page relationships.You can read 
+                        <a href="structure.html#webs">URL Structure</a> of limeberry before reading and 
+                        trying redirections.
+                        <br>
+                        <br>
+                         Let's say you have 2 controllers <b>User</b> and <b>Post</b> <br>
+                                        in <b>UserController.php</b> controller we have 3 Actions 
+                                        <pre>
+NewAction
+UpdateAction(userID)
+DeleteAction(userID)
+                    </pre>
+                                           and in <b>PostController.php</b> we have 2 Actions
+                                           <pre>
+ShowAction(postID)
+UpdateAction(postID)
+                    </pre>
+                    
+                    In this case we have the following routes 
+                    <pre>
+http://localhost/<b>User</b>/New
+http://localhost/<b>User</b>/Update/<b>ID</b>
+http://localhost/<b>User</b>/Delete/<b>ID</b>
+
+
+http://localhost/<b>Post</b>/Show/<b>ID</b>
+http://localhost/<b>Post</b>/Update/<b>ID</b>
+
+                    </pre>
+                    <br><br>
+                    
+                    
+                        </p>
+                    
+                    
+                    
+                        
+                    
+                        <br>
+                    
+                    
+                    
+                        <h4 id="RedirectToAction">RedirectToAction()</h4>
+                        <p>
+                        This function is used to redirect to actions in controllers. RedirectToAction 
+                        function gets 3 parameters and returns string. 
+                        <pre>
+ <span class="ug-method">Url::RedirectToAction</span>(<span class="ug-type">string</span>  $controllerName, <span class="ug-type">string</span>  $action,  <span class="ug-type">mixed</span> $parameter = null) : <span class="ug-type">string</span>
+                    </pre>
+                    <br><br><br>
+                        <b>Example</b>
+                        <pre>
+use limeberry\Url as pUrl;
+< a href="< ?php <b style="color:red;"> echo pUrl::RedirectToAction("User","Update", "9282"); ?> </b> "> User Name < /a>
+
+< a href="< ?php <b style="color:red;"> echo pUrl::RedirectToAction("User","New"); ?> </b> "> Create User < /a>
+
+< a href="< ?php <b style="color:red;"> echo pUrl::RedirectToAction("Post","Show", "7892"); ?> </b> "> Read Topic < /a>
+
+...
+                                             </pre>
+                        </p>
+                    
+                        <h4 id="AreaRedirection">AreaRedirection()</h4>
+                        <p>
+                        This function is used to redirect to actions in sub folders in controller path. AreaRedirection 
+                        function gets 4 parameters and returns string. 
+                        <pre>
+ <span class="ug-method">Url::AreaRedirection</span>(<span class="ug-type">string</span>  $area, <span class="ug-type">string</span>  $controllerName, <span class="ug-type">string</span>  $action,  <span class="ug-type">mixed</span> $parameter = null) : <span class="ug-type">string</span>
+                                </pre>
+                        </p>
+
+                            <h4 id="Redirect">Redirect()</h4>
+                        <p>
+                        Simple redirect url; For example you can use this with html's <code>a</code> tags href attribute 
+                    <pre>
+ <span class="ug-method">url::Redirect</span>(<span class="ug-type">string</span>  $url)
+                    </pre> <br>
+                        <span class="ug-keyword ug-code ug-bold">$url</span>; Link you want to redirect; ex: <span class="ug-method">Redirect</span>(<span class="ug-type">"http://www.example.com"</span>)<br><br>
+                        </p>
+                    
+                    
+                    <h4 id="example_use">Example; Use In Controllers</h4>
+                    <p>
+                    
+                     In this example when we navigate to <b>http://localhost/todo_list/Index/Show</b> the ShowAction redirects us to
+                                       IndexAction in Index controller with parameter 999.
+                    <pre>
+use limeberry\Controller As p_ctrl;
+<b style="color:red;">use limeberry\Url as redirect;</b>
+
+class indexController extends p_ctrl{
+
+    public function indexAction($param=0)
+    {		
+
+        if($param == 1)
+        {
+            $this->View->our_header = "This is list: ".$param;
+            $this->View->our_text = "text text text text text text text ";
+        }else if ($param==2)
+        {
+            $this->View->our_header = "<b> Second Item  </b>";
+            $this->View->our_text = "second second second second second second second second second ";
+        }else{
+            $this->View->our_header = "Item ".$param;
+            $this->View->our_text = $param;
+        }
+
+        ##Load view
+        if($this->View->isAvailable("home/home.phtml"))
+        {
+            $this->View->Render("home/home.phtml");
+        }else{
+            echo "Page not found";
+        }
+    }
+    <b style="color:green;">public function ShowAction($param=0)</b>
+    {		
+        <b>header('location: '.redirect::redirectToAction("Index", "Index", "999"));</b>
+        echo "	Redirecting.....";
+    }
+}
+                    </pre>
+                    </p>
+                    
+                    <h4 id="GetData">GetData()</h4>
+                    <p>
+                    You can use GetData method to get a form data posted with <code>get</code> method.
+                    <pre>
+ <span class="ug-method">Url::GetData</span>(<span class="ug-type">string</span>  $id)
+                    </pre> <br>
+                    <span class="ug-keyword ug-code ug-bold">$id</span>; (optional)* If you do not set this value, you will get an array with all values, You can <b>set</b> it to get a specific value from posted Url data.
+                    </p>
+                    
+                    
+                    <h4 id="GetUrl">GetUrl()</h4>
+                    <p>
+                    Returns full url of current page.
+                    <pre>
+ <span class="ug-method">Url::GetUrl</span>()
+                    </pre> <br>
+                    
+                    </p>
+                    
+                    <br><hr><br>
+                    <h4 id="route_class">Route Class</h4>
+                    <p>
+                    This class is used to simply manage routes of your application.
+                    All functions of this class must be used in Application Register Function
+                    </p>
+                    
+                    <h4>Route Class:: Required Namespace</h3>
+                        <p>
+                                
+                                    If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                                    <span>use <span class="ug-code ug-keyword ug-bold">limeberry\Route;</span><br>
+                                    <br>
+                    </p>
+                    
+                    
+                    <h4>Route Class:: Available Methods</h3>
+                        <p>
+                            <h5>Route::MapNew()</h5>
+                            <p>
+                                You can use this function to map a new url.
+                                <pre>
+ Route::MapNew("login-page", "/controller/action/params1../paramsN");
+                                </pre>
+                            </p>
+                    
+                    
+                            <br><br>
+                    
+                            <h5>Route::ResolveMap()</h5>
+                            <p>
+                                This function returns a value of mapped url data.
+                                <pre>
+ Route::ResolveMap("login-page");
+                                </pre>
+                    
+                                returns: <b>"/controller/action/params1../paramsN"</b>
+                            </p>
+                    
+                    
+                            <br><br>
+                            
+                                    <h5>Route::ClearMaps()</h5>
+                                    <p>
+                                        This function clears all mapped url data.
+                                        <pre>
+ Route::ClearMaps();
+                                        </pre>
+                                    </p>
+                    
+                    
+                                    
+                            <br><br>
+                            
+                                    <h5>Route::ForceRedirect()</h5>
+                                    <p>
+                                            This function is used to redirect your application with headers.
+                                        <pre>
+ route::ForceRedirect("name-of-mapped-url", "value-to-set-if-parameter-is-available");
+                                        </pre>
+                    
+                                        <br><br>
+                                        <b>Example use with parameters:</b> <br><br>
+                    
+                                        <pre>
+//Set url in ApplicationClass
+Route::MapNew("searchpage", "/applications/search/{@}");
+.
+..
+...
+....
+
+//Force Redirect Function
+Route::ForceRedirect("searchpage", "limeberry_framework");
+
+//command above returns:: www.sitename.com/applications/search/limeberry_framework
+                    
+                    
+                                        </pre>
+                    
+                    
+                    
+                                    </p>
+                    </p>
+                    
+                    
+                       
+
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+
+                    <h5>Namespace for Url Class</h5>
+                    <br>
+                    If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\Url;</span><br>
+                    <br>
+
+
+
+                    
+                    <h5>Namespace for Route Class</h5>
+                    <br>
+                    If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+                    <br><br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\Route;</span><br>
+                    <br>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

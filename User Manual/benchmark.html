@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Benchmark Class </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Benchmark Class</h3>
+                        
+	<ol class="ug-tocs">
+            <li><a href="#pagedescription">Benchmark Class</a></li>
+            <li>Methods
+                <ol class="ug-tocs">
+                               <li> <a href="benchmark.html#start"><code>Start()</code> </a></li>
+                            <li> <a href="benchmark.html#finish"><code>Finish()</code> </a></li>
+                            <li> <a href="benchmark.html#savepoint"><code>SavePoint()</code> </a></li>
+                            <li> <a href="benchmark.html#points"><code>Points()</code></a></li>
+                </ol>
+            </li>
+    
+        </ol>
+        <br>
+        <!-- CONTENT START -->
+    
+        <br><br>
+        <h4 id="pagedescription">Benchmark Class</h4>
+        <p>
+        You can use limeberry framework's benchmarking class to calculate the time elapsed from start point untill the end point of your code.
+        <br>
+        
+    
+        </p>
+    
+    
+
+    
+        <br>
+    
+    
+                        <h4 id="start">Start</h4>
+                        <p>
+                    This function is used to define a start point for your benchmarking. Returns <b>Float</b>
+<pre>
+use limeberry\tool\benchmark;
+$bm = new benchmark();
+$start = $bm-><b>Start();</b>
+//Your code goes here
+//...
+//...
+echo $bm->Finish($start);
+</pre>
+                        </p>
+    
+                        <h4 id="finish">Finish</h4>
+                        <p>
+                             This function is used to define a finish point for your benchmarking.Get's 1 parameterand returns <b>Float</b>.
+                             You can set your start variable as parameter.
+<pre>
+use limeberry\tool\benchmark;
+$bm = new benchmark();
+$start = $bm->Start();
+//Your code goes here
+//...
+//...
+echo $bm-><b>Finish($start);</b>
+</pre>
+    
+                         </p>
+    
+                        <h4 id="savepoint">SavePoint</h4>
+                        <p>
+                        This function is used to save a benchmarking point to an array. Get's 2 parameters(string, finish_point) and returns void.
+<pre>
+use limeberry\tool\benchmark;
+$bm = new benchmark();
+$start = $bm->Start();
+//Your code goes here
+//...
+//...
+echo $bm->Finish($start);
+<b> $bm->SavePoint("test_benchmark",$bm->Finish($start));</b>
+</pre>
+                        </p>
+    
+                        <h4 id="points">Points</h4>
+                        <p>This function is used to return array of saved points. </p>
+    
+<pre>
+use limeberry\tool\benchmark;
+$bm = new benchmark();
+$start = $bm->Start();
+//Your code goes here
+//...
+//...
+echo $bm->Finish($start);
+$bm->SavePoint("test_benchmark",$bm->Finish($start));
+var_dump(<b>$bm->Points()</b>);
+</pre>
+    
+    
+                        The result will be:
+<pre>
+
+
+C:\wamp64\www\todo_list\view\home\profile.phtml:10:
+array (size=1)
+0 => 
+array (size=1)
+'test_benchmark' => float 0.0001
+</pre>
+    
+        <!-- ./ END CONTENT -->
+        <br><br><br>
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    
+        <br>If you want to use this library, you need to import required namespace in your php code file. Required namespace:
+        <br> <br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\tool\Benchmark;</span><br>
+    
+    
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>

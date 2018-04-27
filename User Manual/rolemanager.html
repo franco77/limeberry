@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Limeberry - Role Manager &amp; Role Provider </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+</head>
+<body>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                            <img src="assets/img/limeberry_logo_alpha.png" alt="Limeberry" height="">
+                    </a>
+                <a class="navbar-brand" href="index.html">Limeberry Documentation</a>
+            </div>
+            
+            <!--
+            <ul class="nav navbar-nav">
+                <li><a href="index.html">All Topics</a></li>
+            </ul>
+            -->
+        </div>
+    </nav>
+
+    <div style="padding:40px;">
+
+        <div class="row">
+            <div class="col-md-8">
+
+                <a href="index.html" class="btn btn-default"  ><img src="assets/img/ico_back.png"/> Topics</a>
+                <br><br>
+                
+                <div class="graybox">
+                        <h3>Role Manager &amp; Role Provider</h3>
+                           <br>
+                           <ol class="ug-tocs">
+                                <li><a href="#pagedescription">Role Managers &amp; Role Providers</a></li>
+                                <li><a href="#FillRoles">Methods</a></li>
+                                <li><a href="#example">Example</a></li>
+                                    
+                        
+                            </ol>
+                            <br>
+                            <!-- CONTENT START -->
+                        
+                            <br><br>
+                            <h3 id="pagedescription">Role Managers &amp; Role Providers</h3>
+                      
+                            
+                                <h4>RoleProvider</h4>
+                        This class is used to provide roles from database and set them in application register function.
+                        Role Manager class will access available roles and manage controller or Action permissions.
+                        
+                            <br> <br>
+                        
+                                    <h4>RoleManager</h4>
+                                    A basic role mananer class for limeberry Framework.
+                        You can get available roles from database and set them in application register function, to manage user accesses to specific controllers. 
+                        
+                            <br> <br>
+                        
+                        
+                            <br>
+                            
+                        
+                     
+                               
+                        
+                            <br>
+                        
+                            <h4 id="FillRoles">FillRoles()</h4>
+                            <p>
+                                This function is used to fill roles with id and value from database.
+                        This is necessary for using role manager class.
+                        <pre>
+RoleProvider::<span class="ug-method">FillRoles</span>(<span class="ug-type">Array</span>  $roles) : <span class="ug-type">void</span>
+                        </pre>
+                        
+                        <span class="ug-code ug-method ug-bold">$roles </span> Set all roles to role provider class. Array key is id in database and value is a named provision of role
+                        
+                        <br>
+                        
+                        You need to fill all roles in Application / Register() 
+                        
+                            </p>
+                        
+                        
+                            <h4 id="RequiredRoles">RequiredRoles()</h4>
+                            <p>
+                                This function is used to set required roles for controller or controller action. If you want to affect a whole controller with set role you must setup role manager in construct method.
+                        <pre>
+RoleProvider::<span class="ug-method">RequiredRoles</span>(<span class="ug-type">Array</span>  $roles) : <span class="ug-type">void</span>
+                        </pre>
+                        
+                        <span class="ug-code ug-method ug-bold">$roles </span> Required roles for a action in a controller or in whole controller.
+                        
+                        <br>
+                        
+                            </p>
+                        
+                        
+                        
+                            <h4 id="ProvidedRoles">ProvidedRoles()</h4>
+                            <p>
+                                This function is User's provided roles. Can be filled from database. Later you will have the opportunity to check it with isAuthorized method.
+                        <pre>
+RoleProvider::<span class="ug-method">ProvidedRoles</span>(<span class="ug-type">Array</span>  $roles) : <span class="ug-type">void</span>
+                        </pre>
+                        
+                        <span class="ug-code ug-method ug-bold">$roles </span> provided roles for user
+                        
+                        <br>
+                        
+                            </p>
+                        <br> <hr>
+                        
+                        
+                        
+                        
+                        <h4 id="isAuthorized">isAuthorized()</h4>
+                            <p>
+                                Checks if user is authorized.
+                        <pre>
+RoleManager::<span class="ug-method">isAuthorized()</span> : boolean
+                        </pre>
+                        
+                        
+                        <br>
+                        
+                            </p>
+                        
+                        
+                        
+                        <h4 id="ClearRequired">ClearRequired()</h4>
+                            <p>
+                                Clear All required roles.
+                        <pre>
+RoleManager::<span class="ug-method">ClearRequired()</span>
+                        </pre>
+                        
+                        
+                        <br>
+                        
+                            </p>
+                        
+                        
+                        
+                            <h3 id="example">Example</h3>
+                        
+                            <p>
+                            Let's say you have a Index controller and IndexAction, and 3 roles(User, Administrator, Guest) available totally. You have a 'x' user which has roles, (Guest, User) and wants to access IndexAction which requires role 'Administrator'. For checking if your
+                            user 'x' can access to IndexAction you need to do followings;
+                        
+                            <br>
+                            <ol>
+                                <li>Setup All Roles in Application Register</li>
+                                <li>Do a control in Index controller and IndexAction</li>
+                                <li>If Not Authorized show message or redirect...</li>
+                            </ol>
+                        
+                        
+                            <br><br>
+                        
+                            <b>Application Confiuration; app_config.php</b>
+                            <pre>
+/***********************************************
+*	Application Class
+*/
+
+class Application
+{
+    
+        /**
+            * This function is called automatically by framework on entry...
+            * You can do all your global object definitions or user-based settings...
+            */
+    public function Register()
+    {
+            //Fill Roles
+            //We are filling manually, but you can get all roles from your database.
+            $data_set = array("1"=>"User", "2"=>"Administrator", "3"=>"Guest");
+            RoleProvider::<span class="ug-code ug-keyword ug-bold">FillRoles($data_set)</span>;
+            
+        }
+
+}
+                            </pre>
+                        
+                        
+                        <br>
+                            <b>Controller Configuration; controller/indexController.php</b>
+                        
+                            <pre>
+                        class indexController extends plController{
+                        
+    
+        public function __construct() {
+            parent::__construct();
+            
+            //You can get required roles from database we will give manually in this example.
+            RoleProvider::<span class="ug-code ug-keyword ug-bold">RequiredRoles(array("2"=>"Administrator"))</span>;
+            
+            //User's roles: you can get them from your database we will fill manually...
+            
+            RoleProvider::<span class="ug-code ug-keyword ug-bold">ProvidedRoles(array("1"=>"User"));</span>
+            
+            //now make the controls. You can block all contents of a controller or you can
+            //allow your user some Actions. We will block our user to access index page.
+        }
+    
+    public function IndexAction($param=0)
+    {
+            
+            if(RoleManager::<span class="ug-code ug-keyword ug-bold">isAuthorized()</span>)
+            {
+                $this->View->Render("index.php");
+            }else{
+                echo "You are not allowed";
+                exit();
+                //Do redirections or anything else;
+            }
+            
+    }
+}
+
+                        </pre>
+                        
+                        
+                        <div class="alert alert-info">
+                            <strong>Remind; </strong> In indexController.php controller RoleManager checks authorization for IndexAction, but you can control it
+                            in __construct and block all Controller actions.
+                        </div>
+                            </p>
+                        
+                </div>
+            </div>
+
+            <!------------------------------------------------ ---------------------->
+            <div class="col-md-4">
+                <div class="graybox">
+                    <h4> <img src="assets/img/ico_gear.png" width="22" height="22"/> Namespace</h4>
+                    
+                    If you want to use this library, you need to import required namespace in your php code file. Required namespace: <br>
+                    <br>
+                    <br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\security\RoleManager;</span><br>
+                    <br><span>use <span class="ug-code ug-keyword ug-bold">limeberry\security\RoleProvider;</span><br>
+                
+                
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+             
+    <br><br>
+
+    <center>
+        (C) 2018 Limeberry Framework | All Rights Reserved
+    </center>
+    
+</body>
+</html>
