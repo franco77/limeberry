@@ -2,6 +2,8 @@
   <img src="https://raw.githubusercontent.com/limeberry/limeberry.github.io/master/assets/img/limeberry_logo.png" width="154" />
 </p>
 
+[![Build Status](https://travis-ci.org/limeberry/limeberry.svg?branch=master)](https://travis-ci.org/limeberry/limeberry)
+
 ## About Limeberry Framework
 
 > <b>Download</b> Or <b>Clone</b> this repository for creating new projects using Limeberry PHP framework.
