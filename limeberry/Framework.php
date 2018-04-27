@@ -200,7 +200,7 @@ namespace limeberry
          */
         public static function Version()
         {
-            return "1.x";
+            return "1.0";
         }
     }
 }
