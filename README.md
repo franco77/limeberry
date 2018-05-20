@@ -40,7 +40,6 @@ In simple words; it is for you...
 ## Learning Limeberry Framework
 We tried to explain the definitions and usage of the framework in a simple user manual. You can start learning Limeberry from the user manual. We are working harder to create slideshow tutorials and some educational material for the framework. We will begin publishing new tutorials as soon as possible.
 - [Limeberry Framework v1.x User Manual](https://limeberry.github.io/docs/index.html)
-- [All Namespaces of Limeberry Framework (Current)](https://limeberry.github.io/namespace/index.html)
 
 
 

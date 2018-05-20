@@ -1,0 +1,14 @@
+<?php
+
+use limeberry\Controller As myController;
+
+
+class @rn extends myController{
+    
+    public function indexAction($param=0)
+    {      
+        echo "New controller created by Limeberry Console";
+    }
+}
+
+?>

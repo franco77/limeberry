@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Sample code file using a master page to create a view.
+ * This is a index page. You can delete this and create your own index page.
+ * You have been redirected to this view from Index controller and IndexAction.
+ */
+use limeberry\Page;
+$view = new Page();
+$view->SetLayout("@rn.php");
+
+
+$view->BeginContent();?>
+
+<!-- YOUR HTML CODES HERE -->     
+        
+<?php 
+$view->EndContent(); 
+?>
+
