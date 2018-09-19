@@ -18,12 +18,13 @@ namespace limeberry
     * @ignore
     */
     global  $application_folder;
-        
+    
+    global $application_install_url;
     /**
     * @ignore
     */
-    define("rPath",  preg_replace('/[\\\\\\/]+/', '/', '/' . substr(__DIR__, strlen($_SERVER['DOCUMENT_ROOT'])) .DS.'..'.DS.$application_folder.DS.'template'.DS));
-        
+    //define("rPath",  preg_replace('/[\\\\\\/]+/', '/', '/' . substr(__DIR__, strlen($_SERVER['DOCUMENT_ROOT'])) .DS.'..'.DS.$application_folder.DS.'template'.DS));
+      define("rPath", $application_install_url.DS.$application_folder.DS.'template'.DS);  
     /**
     * This library is used in templates and views.
     */
@@ -169,7 +170,7 @@ namespace limeberry
             $this->__applyParameters();
             echo $this->output;
 	}
-    
+        
     }
 }
 ?>
