@@ -434,6 +434,14 @@ namespace limeberry\forms
             }
             return $creator;
         }
+        
+        /**
+         * Create a csrf token for the form.
+         */
+        public static function csrfField()
+        {
+            return '<input type="hidden" name="csrf_field" value="'. sha1(\limeberry\Url::getUrl()).'" />';
+        }
     
     }
     

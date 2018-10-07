@@ -12,19 +12,16 @@
 **/
 namespace limeberry
 {
-    include_once('base.php');
-        
-    /**
-    * @ignore
-    */
-    global  $application_folder;
+    use limeberry\Configuration as conf;
     
-    global $application_install_url;
+    include_once('base.php');
+
+    
     /**
     * @ignore
     */
-    //define("rPath",  preg_replace('/[\\\\\\/]+/', '/', '/' . substr(__DIR__, strlen($_SERVER['DOCUMENT_ROOT'])) .DS.'..'.DS.$application_folder.DS.'template'.DS));
-      define("rPath", $application_install_url.DS.$application_folder.DS.'template'.DS);  
+    define("rPath", conf::getApplicationUrl().DS.conf::getApplicationFolder().DS.'template'.DS);  
+    
     /**
     * This library is used in templates and views.
     */
@@ -66,11 +63,9 @@ namespace limeberry
         * Install Page class
         */
 	function __construct()
-	{
-            global $application_folder;
-            
+	{            
             #SET LAYOUT PATHS
-            $this->MASTER = ROOT.DS.$application_folder.DS.'template'.DS;		
+            $this->MASTER = ROOT.DS.conf::getApplicationFolder().DS.'template'.DS;		
         }
 
 	/**

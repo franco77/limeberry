@@ -12,12 +12,13 @@
 **/
 namespace limeberry
 {
+    use limeberry\Configuration;
     
     /**
      * This class is used to simply manage routes of your application.
      * All functions of this class must be used in Application Register Function
      */
-    class Route
+    class Route extends Configuration
     {
         /**
         * Map new route name
@@ -26,9 +27,9 @@ namespace limeberry
         */       
 	public static function MapNew($mapname="index", $mapdestination="index/index/0")
 	{
-            global $application_static_routes;
-            global $application_install_url;
-            $application_static_routes[$mapname] = $application_install_url.'/'.$mapdestination;
+            $application_static_routes = parent::getStaticRoute();
+            $application_static_routes[$mapname] = Configuration::getApplicationUrl().'/'.$mapdestination;
+            parent::setStaticRoute($application_static_routes);
         }
 
         /**
@@ -38,7 +39,7 @@ namespace limeberry
         */        
 	public static function ResolveMap($mapname=null)
 	{
-            global $application_static_routes;
+            $application_static_routes = Configuration::getStaticRoute();
             if(!is_null($mapname))
             {
                 return $application_static_routes[$mapname];
@@ -55,7 +56,7 @@ namespace limeberry
         */
 	public static function ForceRedirect($mapname="index", $setparameter=null)
 	{
-            global $application_static_routes;
+            $application_static_routes = Configuration::getStaticRoute();
 
             if(isset($application_static_routes[$mapname]))
             {
@@ -80,8 +81,7 @@ namespace limeberry
         */
         public static function ClearMaps()
         {
-            global $application_static_routes;
-            $application_static_routes = array();
+            Configuration::setStaticRoute(array());
 	}
 
         /**

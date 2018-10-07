@@ -12,7 +12,9 @@
 **/
 namespace limeberry\tool
 {
-    #require_once('..\base.php');
+    use limeberry\Configuration as conf;
+   
+    
     /**
      * @ignore 
      */
@@ -41,17 +43,13 @@ namespace limeberry\tool
     **/
     class Library
     {
-
-        function __construct()
-        {
-        }
-
+ 
         private static function checkFile($filepath)
         {
-                if(file_exists($filepath))
-                {
-                        return true;
-                }else {return false;}
+            if(file_exists($filepath))
+            {
+                    return true;
+            }else {return false;}
         }
 
         /**
@@ -62,36 +60,33 @@ namespace limeberry\tool
         */
         public static function Load($filename='', $type=2)
         {
+            $filepath = ROOT.DS.conf::getApplicationFolder().DS.'library'.DS.$filename;
+            if(self::checkFile($filepath))
+            {
+                switch ($type) {
+                case 0:
+                        #mode:require
+                        require($filepath);
+                        break;
+                case 1:
+                        #mode:Require_Once
+                        require_once($filepath);
+                        break;
+                case 2:
+                        #mode:include
+                        include($filepath);
+                        break;
 
-                global $application_folder;
-                $filepath = ROOT.DS.$application_folder.DS.'library'.DS.$filename;
-                if(self::checkFile($filepath))
-                {
-                                switch ($type) {
-                                case 0:
-                                        #mode:require
-                                        require($filepath);
-                                        break;
-                                case 1:
-                                        #mode:Require_Once
-                                        require_once($filepath);
-                                        break;
-                                case 2:
-                                        #mode:include
-                                        include($filepath);
-                                        break;
+                case 3:
+                        #mode:include_once
+                        include_once($filepath);
+                        break;
 
-                                case 3:
-                                        #mode:include_once
-                                        include_once($filepath);
-                                        break;
-
-                                default:
-                                        include_once($filepath);
-                                        break;
-                        }
+                default:
+                        include_once($filepath);
+                        break;
                 }
-
+            }
         }
 
         /**
@@ -102,35 +97,33 @@ namespace limeberry\tool
         */
         public static function LoadConfig($filename='', $type=2)
         {
-                global $application_folder;
+            $filepath = ROOT.DS.conf::getApplicationFolder().DS.$filename;
+            if(self::checkFile($filepath))
+            {
+                switch ($type) {
+                case 0:
+                        #mode:require
+                        require($filepath);
+                        break;
+                case 1:
+                        #mode:Require_Once
+                        require_once($filepath);
+                        break;
+                case 2:
+                        #mode:include
+                        include($filepath);
+                        break;
 
-                $filepath = ROOT.DS.$application_folder.DS.$filename;
-                if(self::checkFile($filepath))
-                {
-                                switch ($type) {
-                                case 0:
-                                        #mode:require
-                                        require($filepath);
-                                        break;
-                                case 1:
-                                        #mode:Require_Once
-                                        require_once($filepath);
-                                        break;
-                                case 2:
-                                        #mode:include
-                                        include($filepath);
-                                        break;
+                case 3:
+                        #mode:include_once
+                        include_once($filepath);
+                        break;
 
-                                case 3:
-                                        #mode:include_once
-                                        include_once($filepath);
-                                        break;
-
-                                default:
-                                        include_once($filepath);
-                                        break;
-                        }
-                }	
+                default:
+                        include_once($filepath);
+                        break;
+                }
+            }	
         }
 
 
@@ -141,12 +134,11 @@ namespace limeberry\tool
         */
         public static function isAvailable($filename=null)
         {
-                global $application_folder;
-                $filepath = ROOT.DS.$application_folder.DS.'library'.DS.$filename;
-                if(file_exists($filepath))
-                {
-                        return true;
-                }else {return false;}
+            $filepath = ROOT.DS.conf::getApplicationFolder().DS.'library'.DS.$filename;
+            if(file_exists($filepath))
+            {
+                    return true;
+            }else {return false;}
         }
     }
 }

@@ -12,6 +12,8 @@
 **/
 namespace limeberry
 {
+    use limeberry\Configuration as conf;
+    
     require_once 'base.php';
    
     /**
@@ -28,12 +30,11 @@ namespace limeberry
 	*/
 	public function Render($viewScript, $isUsual=true)
 	{
-            global $application_folder;
             if($isUsual)
             {
-                require(ROOT.DS.$application_folder.DS.'view'.DS.$viewScript);
+                require(ROOT.DS.conf::getApplicationFolder().DS.'view'.DS.$viewScript);
             }else{
-                require(ROOT.DS.$application_folder.DS.$viewScript);
+                require(ROOT.DS.conf::getApplicationFolder().DS.$viewScript);
             }
         }
 
@@ -46,17 +47,16 @@ namespace limeberry
 	*/	
 	public function isAvailable($viewScript, $isUsual=true)
 	{
-            global $application_folder;
             if($isUsual)
             {
-                if(file_exists(ROOT.DS.$application_folder.DS.'view'.DS.$viewScript))
+                if(file_exists(ROOT.DS.conf::getApplicationFolder().DS.'view'.DS.$viewScript))
                 {
                     return true;
                 }else{
                     return false;
                 }
             }else{
-                if(file_exists(ROOT.DS.$application_folder.DS.$viewScript))
+                if(file_exists(ROOT.DS.conf::getApplicationFolder().DS.$viewScript))
                 {
                     return true;
                 }else{

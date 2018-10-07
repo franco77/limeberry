@@ -7,6 +7,47 @@ namespace limeberry
     */
     Class Configuration
     {
+        /** @ignore */
+        private static $application_folder; 
+        /** @ignore */
+        private static $application_is_root; 
+        /** @ignore */
+        private static $application_is_urlsecure; 
+        /** @ignore */
+        private static $application_unwanted_params; 
+        /** @ignore */
+        private static $application_install_url;
+        /** @ignore */
+        private static $application_static_routes;
+        /** @ignore */
+        private static $application_name;
+        /** @ignore */
+        private static $application_version;
+        /** @ignore */
+        private static $application_description;
+        /** @ignore */
+        private static $application_query_data; 
+        /** @ignore */
+        private static $errors_enabled;
+        
+        /**
+         * Initialize  default application configuration.
+         */
+        public function __construct()
+        {
+            self::$application_folder = "application";
+            self::$application_is_root = false;
+            self::$application_is_urlsecure = false;
+            self::$application_unwanted_params = array();
+            self::$application_install_url = "localhost";
+            self::$application_static_routes = array();
+            self::$application_name = "Limeberry Application";
+            self::$application_version = "1.0.0";
+            self::$application_description = "Your description for the application";
+            self::$application_query_data = array();       
+        }
+        
+        
         /**
         * This function is used to set development environment.
         * Accepted values: "development", "publish", "default"
@@ -14,32 +55,37 @@ namespace limeberry
         */
 	public static function setEnvironment($prm_env)
 	{
-            global $application_is_published;
-                    
             switch ($prm_env) {
                 case 'development':
                     //Set environment for development;
                     error_reporting(E_ALL);
-                    $application_is_published = false;
+                    self::$errors_enabled = true;
                     break;
 				
                 case 'publish':
                     //set environment for publish;
                     error_reporting(0);
-                    $application_is_published = true;
+                    self::$errors_enabled = false;
                     break;
-
                 case 'default':
                     //do not set;
                     break;
-				
-
                 default:
                     //Set environment for development;
                     break;
             }
 	}
-
+        
+        /**
+         * Returns true if
+         * @return Boolean
+         */
+        public function isErrorsEnabled()
+        {
+            return self::$application_is_published;
+        }
+        
+        
         /**
         * This function is used to set application folder for Limeberry frameworks current config.
         * @param string $prm_folder_name Application's folder name
@@ -47,9 +93,18 @@ namespace limeberry
         */
 	public static function setApplicationFolder($prm_folder_name="application")
         {
-            global $application_folder;
-            $application_folder = $prm_folder_name;	
+            self::$application_folder = $prm_folder_name;	
 	}
+                
+        /**
+        * Returns application Folder
+        * @return string
+        */       
+        public static function getApplicationFolder()
+        {
+            return self::$application_folder;
+        }
+        
 
         /**
         * This function is used to determine if your application in server is in root directory or not. Set true if your app will run in root directory
@@ -58,19 +113,37 @@ namespace limeberry
 		
         public static function setRoot($prm_isroot=false)
 	{
-            global $application_is_root;
-            $application_is_root = $prm_isroot;
+            self::$application_is_root = $prm_isroot;
 	}
 		
+        /**
+        * Returns application Folder
+        * @return bool
+        */       
+	public static function isRoot()
+	{
+            return self::$application_is_root;
+        }
+        
+        
         /**
         * This function is very important, when you use response and route class your redirect url will be get from here.
         * @param string $prm_url Application url ex: http://localhost/myproject
         */
 	public static function setApplicationUrl($prm_url="localhost")
 	{
-            global $application_install_url;
-            $application_install_url=$prm_url;
+            self::$application_install_url=$prm_url;
 	}
+        
+        /**
+        * Returns application url
+        * @return string
+        */
+	public static function getApplicationUrl()
+	{
+            return self::$application_install_url;
+        }
+                
 		
                 
         /**
@@ -79,9 +152,19 @@ namespace limeberry
         */
         public static function setUrlProtected($prm_urlsec = false)
         {
-            global $application_is_urlsecure;
-            $application_is_urlsecure = $prm_urlsec;
+            self::$application_is_urlsecure = $prm_urlsec;
         }
+            
+        
+        /**
+        * Returns True if Url unwanted parameter security is open
+        * @return bool
+        */
+        public static function isUrlProtected()
+        {
+            return self::$application_is_urlsecure;
+        }
+        
         
         /**
         * Set an array for unwanted characters or words
@@ -89,10 +172,36 @@ namespace limeberry
         */
         public static function UnwantedParameters($chars = array())
         {
-            global $application_unwanted_params;
-            $application_unwanted_params = $chars;
+            self::$application_unwanted_params = $chars;
         }
-                
+           
+        /**
+        * Get  array of unwanted characters or words
+        * @returns string
+        */
+        public static function getUnwantedParameters()
+        {
+            return self::$application_unwanted_params;
+        }
+        
+        /**
+         * Store Url Query in an array
+         * @param type $query Array
+         */
+        public static function setQuery($query = array())
+        {
+            self::$application_query_data = $query;
+        }
+        
+        /**
+         * Returns stored queries.
+         * @return Array
+         */
+        public static function getQuery()
+        {
+            return self::$application_query_data;
+        }
+        
         /**
         * This function is used to set a title/name for your project.
         * @param $projectTitleName Title of your application ex: My Blog Application
@@ -100,10 +209,19 @@ namespace limeberry
         */
         public static function setTitle($projectTitle="Default App")
         {
-            global $application_name;
-            $application_name = $projectTitle;
+            self::$application_name = $projectTitle;
         }
-                
+        
+        /**
+        * Title of your application.
+        * @return string
+        */
+        public  static function getTitle()
+        {
+            return self::$application_name;
+        }
+        
+        
         /**
         * This function is used to set version number of your application
         * @param $projectV Version Number of your application ex: 1.0.0
@@ -111,8 +229,16 @@ namespace limeberry
         */
         public static function setVersion($projectV="1.0.0")
         {
-            global $application_version;
-            $application_version = $projectV;
+            self::$application_version = $projectV;
+        }
+        
+        /**
+        * Version number of your application.
+        * @return string
+        */
+        public  static function getVersion()
+        {
+            return self::$application_version;
         }
                 
                   
@@ -123,98 +249,35 @@ namespace limeberry
         */
         public static function setDescription($projectD="My default Limeberry framework application.")
         {
-            global $application_description;
-            $application_description = $projectD;
-        }
-                
-                
-        /**
-        *  This function is used to enable the LimeberryHub project summary.
-        * If you set the parameter to true, Application will create a json
-        * file to contain a summary of your projects configuration. Please disable it if you 
-        * do not use LimeberryHub. 
-        * @param type $param 
-        */
-        public static function CreateConfigSummary($param=true)
-        {
-            global $application_enable_config_json;
-            $application_enable_config_json = $param;
-        }
-
-
-
-        #-------------------------------------------- [GET METHOS] -----------------------------------
-
-        /**
-        * Returns application Folder
-        * @return string
-        */       
-        public static function getApplicationFolder()
-        {
-            global $application_folder;
-            return $application_folder;
+            self::$application_description = $projectD;
         }
         
-        /**
-        * Returns application Folder
-        * @return bool
-        */       
-	public static function isRoot()
-	{
-            global $application_is_root;
-            return $application_is_root;
-        }
-        
-        /**
-        * Returns application url
-        * @return string
-        */
-	public static function getApplicationUrl()
-	{
-            global $application_install_url;
-            return $application_install_url;
-        }
-                
-        /**
-        * Returns True if Url unwanted parameter security is open
-        * @return bool
-        */
-        public static function isUrlProtected()
-        {
-            global $application_is_urlsecure;
-            return $application_is_urlsecure;
-        }
-                
-        /**
-        * Title of your application.
-        * @return string
-        */
-        public  static function getTitle()
-        {
-            global $application_name;
-            return $application_name;
-        }
-        
-        
-        /**
-        * Version number of your application.
-        * @return string
-        */
-        public  static function getVersion()
-        {
-            global $application_version;
-            return $application_version;
-        }
-                
         /**
         * Description of your application.
         * @return string
         */         
         public  static function getDescription()
         {
-            global $application_description;
-            return $application_description;
+            return self::$application_description;
         }	
+        
+        /**
+         * Set Static Routes
+         * @param Array $ssr 
+         */
+        protected static function setStaticRoute($ssr = array())
+        {
+            self::$application_static_routes = $ssr;
+        }
+        
+        /**
+         * Get Static Routes
+         */
+        protected static function getStaticRoute()
+        {
+            return self::$application_static_routes;
+        }
+    
     }
 }
 

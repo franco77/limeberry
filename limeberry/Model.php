@@ -12,6 +12,8 @@
 **/
 namespace limeberry
 {
+    use limeberry\Configuration;
+    
     /**
      * This class is used to operate with models
      */
@@ -23,8 +25,7 @@ namespace limeberry
         */
         public static function Load($class="")
         {
-            global $application_folder;
-            $fileName = $application_folder.DS.'model'.DS.$class.'.php';
+            $fileName = Configuration::getApplicationFolder().DS.'model'.DS.$class.'.php';
             if(file_exists($fileName))
             {
                 require_once $fileName;

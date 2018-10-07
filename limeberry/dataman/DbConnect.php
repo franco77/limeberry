@@ -12,140 +12,139 @@
 **/
 namespace limeberry\dataman
 {
-	use PDO;
-        
+    use PDO;
+
+    /**
+     * This library is used to manage your database connections.
+     */
+    class DbConnect
+    {
         /**
-         * This library is used to manage your database connections.
+         *
+         * @var mixed variable This will store your mysql connection 
          */
-	class DbConnect
-	{
-                /**
-                 *
-                 * @var mixed variable This will store your mysql connection 
-                 */
-		private $connection;
-                
-                /**
-                 *
-                 * @var bool Is your database connection open 
-                 */
-		private $is_connected;
-                
-                /**
-                 *
-                 * @var String last errors occured in your database. 
-                 */
-		private $errors;
+        private $connection;
 
-		/**
-		*	Create a MySql connection
-		*	@param string Database Host name
-		*	@param string Database User name  
-		*	@param string Database Password 
-		*	@param Array Database PDO options
-		*	@return Connection
-		*/
+        /**
+         *
+         * @var bool Is your database connection open 
+         */
+        private $is_connected;
 
-		function __construct($constring,$user, $pass, $options=null)
-		{
-			
-                    if($options==null)
-                    {
-                        $options=array(
-                        PDO::ATTR_PERSISTENT    => true,
-                        PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION
-                                    );
-                    }
-                    try{
-                        $this->connection = new PDO($constring, $user, $pass, $options);
-                        $this->is_connected = true;
-                    }catch(PDOException $ex){
-                        $this->is_connected = false;
-                        $this->errors = $ex->getMessage();
-                    }
-                    return $this;
-	        
-		}
+        /**
+         *
+         * @var String last errors occured in your database. 
+         */
+        private $errors;
 
-		/**
-		* This function is used to return an active database connection
-		* @return database connection
-		*/
-		public function Source(){
-                    return $this->connection;
-		}
+        /**
+        *	Create a MySql connection
+        *	@param string Database Host name
+        *	@param string Database User name  
+        *	@param string Database Password 
+        *	@param Array Database PDO options
+        *	@return Connection
+        */
 
-		/**
-		*	Check if connection available
-		*	@return bool
-		*/
-		public function isConnected()
-		{
-                    if($this->is_connected)
-                    {
-                            return true;
-                    }
-                    else{
-                            return false;
-                    }
-		}
+        function __construct($constring,$user, $pass, $options=null)
+        {
 
-		/**
-		*	Create a mysql connection
-		*	@param string Database Host name
-		*	@param string Database User name  
-		*	@param string Database Password 
-		*	@param string Database PDO options
-		*	@return MySql Connection
-		*/
-		public function Connection($constring,$user, $pass,$options=null)
-		{
-			
-                    if($options==null)
-                    {
-                        $options=array(
-                        PDO::ATTR_PERSISTENT    => true,
-                        PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION
-                     );
-                    }
-                    try
-                    {
-                        $this->connection = new PDO($constring, $user, $pass, $options);
-                        $this->is_connected = true;
-                    }catch(PDOException $ex){
-                        $this->is_connected = false;
-                        $this->errors = $ex->getMessage();
-                    }
-                    return $this->connection;
-		}
+            if($options==null)
+            {
+                $options=array(
+                PDO::ATTR_PERSISTENT    => true,
+                PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION
+                            );
+            }
+            try{
+                $this->connection = new PDO($constring, $user, $pass, $options);
+                $this->is_connected = true;
+            }catch(PDOException $ex){
+                $this->is_connected = false;
+                $this->errors = $ex->getMessage();
+            }
+            return $this;
+
+        }
+
+        /**
+        * This function is used to return an active database connection
+        * @return database connection
+        */
+        public function Source(){
+            return $this->connection;
+        }
+
+        /**
+        *	Check if connection available
+        *	@return bool
+        */
+        public function isConnected()
+        {
+            if($this->is_connected)
+            {
+                    return true;
+            }
+            else{
+                    return false;
+            }
+        }
+
+        /**
+        *	Create a mysql connection
+        *	@param string Database Host name
+        *	@param string Database User name  
+        *	@param string Database Password 
+        *	@param string Database PDO options
+        *	@return MySql Connection
+        */
+        public function Connection($constring,$user, $pass,$options=null)
+        {
+            if($options==null)
+            {
+                $options=array(
+                PDO::ATTR_PERSISTENT    => true,
+                PDO::ATTR_ERRMODE       => PDO::ERRMODE_EXCEPTION
+             );
+            }
+            try
+            {
+                $this->connection = new PDO($constring, $user, $pass, $options);
+                $this->is_connected = true;
+            }catch(PDOException $ex){
+                $this->is_connected = false;
+                $this->errors = $ex->getMessage();
+            }
+            return $this->connection;
+        }
 
 
-		/**
-		*	Returns last error occured when trying to connect to Mysql database
-		*	@return bool
-		*/
-		public function lastError()
-		{
-                    return $this->error;
-		}
+        /**
+        *	Returns last error occured when trying to connect to Mysql database
+        *	@return bool
+        */
+        public function lastError()
+        {
+            return $this->error;
+        }
 
 
-		/**
-		*	Close a connection
-		*	@return bool
-		*/
-		public function Close()
-                {
-                    try{
-                        $this->connection=null;
-                        $this->is_connected=false;
-                        return true;
-                    }catch(Exception $ex)
-                    {
-                        return false;
-                    }
-		}
-	}
+        /**
+        *	Close a connection
+        *	@return bool
+        */
+        public function Close()
+        {
+            try{
+                $this->connection=null;
+                $this->is_connected=false;
+                return true;
+            }catch(Exception $ex)
+            {
+                return false;
+            }
+        }
+    }
 }
 
 ?>

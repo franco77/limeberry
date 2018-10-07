@@ -16,14 +16,11 @@ namespace limeberry\visual
     /**
      * A special class for creating html tags.
      */
-class Tags
-{
-
-
-
+    class Tags
+    {
         public function PrintCustom($txt)
         {
-                echo $txt;
+            echo $txt;
         }
 
 
@@ -60,18 +57,18 @@ class Tags
         */
         public function Abbr($text=null, $title=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<abbr title="'.$title.'">'.$text.'</abbr>';
-                }else{
-                        $base = '<abbr title="'.$title.'"';
-                        foreach ($attrb as $key => $value) 
-                        {
-                            $base .= ' '.$key.'="'.$value.'"';
-                        }
-                        $base.= ' >'.$text.'</abbr>';
-                        return $base;
-                }
+            if($attrb==null)
+            {
+                    return '<abbr title="'.$title.'">'.$text.'</abbr>';
+            }else{
+                    $base = '<abbr title="'.$title.'"';
+                    foreach ($attrb as $key => $value) 
+                    {
+                        $base .= ' '.$key.'="'.$value.'"';
+                    }
+                    $base.= ' >'.$text.'</abbr>';
+                    return $base;
+            }
         }
 
 
@@ -82,10 +79,10 @@ class Tags
         */
         public function Audio($source=null, $type=null)
         {
-                $base = '<audio controls>';
-                $base .= '<source src="'.$source.'" type="'.$type.'" >';
-                $base .= '</audio>';
-                return $base;
+            $base = '<audio controls>';
+            $base .= '<source src="'.$source.'" type="'.$type.'" >';
+            $base .= '</audio>';
+            return $base;
         }
 
         /**
@@ -95,17 +92,17 @@ class Tags
         */
         public function B($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<b>'.$text.'</b>';
-                }else{
-                        $base = '<b  ';
-                        foreach ($attrb as $key => $value) {
-                                $base .= ' '.$key.'="'.$value.'"';
-                        }
-                        $base.= ' >'.$text.'</b>';
-                        return $base;
-                }
+            if($attrb==null)
+            {
+                    return '<b>'.$text.'</b>';
+            }else{
+                    $base = '<b  ';
+                    foreach ($attrb as $key => $value) {
+                            $base .= ' '.$key.'="'.$value.'"';
+                    }
+                    $base.= ' >'.$text.'</b>';
+                    return $base;
+            }
         }
 
         /**
@@ -146,18 +143,18 @@ class Tags
         */
         public function Code($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<code>'.$text.'</code>';
-                }else{
-                        $base = '<code ';
-                        foreach ($attrb as $key => $value) 
-                        {
-                            $base .= ' '.$key.'="'.$value.'"';
-                        }
-                        $base.= ' >'.$text.'</code>';
-                        return $base;
-                }
+            if($attrb==null)
+            {
+                    return '<code>'.$text.'</code>';
+            }else{
+                    $base = '<code ';
+                    foreach ($attrb as $key => $value) 
+                    {
+                        $base .= ' '.$key.'="'.$value.'"';
+                    }
+                    $base.= ' >'.$text.'</code>';
+                    return $base;
+            }
         }
 
         /**
@@ -166,8 +163,8 @@ class Tags
         */
         public function dl($attrb=null)
         {
-                #$item = new dl($attrb);
-                return  new dl_helper($attrb);
+            #$item = new dl($attrb);
+            return  new dl_helper($attrb);
 
         }
 
@@ -178,18 +175,18 @@ class Tags
         */
         public function Em($text=null, $attrb=null)
         {
-                if($attrb==null)
+            if($attrb==null)
+            {
+                return '<em>'.$text.'</em>';
+            }else{
+                $base = '<em ';
+                foreach ($attrb as $key => $value) 
                 {
-                    return '<em>'.$text.'</em>';
-                }else{
-                    $base = '<em ';
-                    foreach ($attrb as $key => $value) 
-                    {
-                        $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</em>';
-                    return $base;
+                    $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</em>';
+                return $base;
+            }
         }
 
         /**
@@ -199,17 +196,17 @@ class Tags
         */
         public function strong($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<strong>'.$text.'</strong>';
-                }else{
-                        $base = '<strong ';
-                        foreach ($attrb as $key => $value) {
-                                $base .= ' '.$key.'="'.$value.'"';
-                        }
-                        $base.= ' >'.$text.'</strong>';
-                        return $base;
-                }
+            if($attrb==null)
+            {
+                    return '<strong>'.$text.'</strong>';
+            }else{
+                    $base = '<strong ';
+                    foreach ($attrb as $key => $value) {
+                            $base .= ' '.$key.'="'.$value.'"';
+                    }
+                    $base.= ' >'.$text.'</strong>';
+                    return $base;
+            }
         }
 
         /**
@@ -240,19 +237,19 @@ class Tags
         */
         public function span($text=null, $attrb=null)
         {
-                if($attrb==null)
+            if($attrb==null)
+            {
+                    return '<span>'.$text.'</span>';
+            }else
+            {
+                $base = '<span ';
+                foreach ($attrb as $key => $value) 
                 {
-                        return '<span>'.$text.'</span>';
-                }else
-                {
-                    $base = '<span ';
-                    foreach ($attrb as $key => $value) 
-                    {
-                        $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</span>';
-                    return $base;
+                    $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</span>';
+                return $base;
+            }
         }
 
         /**
@@ -262,18 +259,18 @@ class Tags
         */
         public function kbd($text=null, $attrb=null)
         {
-                if($attrb==null)
+            if($attrb==null)
+            {
+                return '<kbd>'.$text.'</kbd>';
+            }else{
+                $base = '<kbd ';
+                foreach ($attrb as $key => $value) 
                 {
-                    return '<kbd>'.$text.'</kbd>';
-                }else{
-                    $base = '<kbd ';
-                    foreach ($attrb as $key => $value) 
-                    {
-                        $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</kbd>';
-                    return $base;
+                    $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</kbd>';
+                return $base;
+            }
         }
 
 
@@ -307,18 +304,18 @@ class Tags
         */
         public function H1($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<h1>'.$text.'</h1>';
-                }else
-                {
-                    $base = '<h1 ';
-                    foreach ($attrb as $key => $value) {
-                            $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</h1>';
-                    return $base;
+            if($attrb==null)
+            {
+                    return '<h1>'.$text.'</h1>';
+            }else
+            {
+                $base = '<h1 ';
+                foreach ($attrb as $key => $value) {
+                        $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</h1>';
+                return $base;
+            }
         }
         /**
         *	@param string  Text
@@ -327,19 +324,19 @@ class Tags
         */
         public function H2($text=null, $attrb=null)
         {
-                if($attrb==null)
+            if($attrb==null)
+            {
+                    return '<h2>'.$text.'</h2>';
+            }else
+            {
+                $base = '<h2 ';
+                foreach ($attrb as $key => $value) 
                 {
-                        return '<h2>'.$text.'</h2>';
-                }else
-                {
-                    $base = '<h2 ';
-                    foreach ($attrb as $key => $value) 
-                    {
-                        $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</h2>';
-                    return $base;
+                    $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</h2>';
+                return $base;
+            }
         }
         /**
         *	@param string  Text
@@ -348,18 +345,18 @@ class Tags
         */
         public function H3($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<h3>'.$text.'</h3>';
-                }else
-                {
-                    $base = '<h3 ';
-                    foreach ($attrb as $key => $value) {
-                            $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</h3>';
-                    return $base;
+            if($attrb==null)
+            {
+                    return '<h3>'.$text.'</h3>';
+            }else
+            {
+                $base = '<h3 ';
+                foreach ($attrb as $key => $value) {
+                        $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</h3>';
+                return $base;
+            }
         }
         /**
         *	@param string  Text
@@ -368,17 +365,17 @@ class Tags
         */
         public function H4($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<h4>'.$text.'</h4>';
-                }else{
-                        $base = '<h4 ';
-                        foreach ($attrb as $key => $value) {
-                                $base .= ' '.$key.'="'.$value.'"';
-                        }
-                        $base.= ' >'.$text.'</h4>';
-                        return $base;
-                }
+            if($attrb==null)
+            {
+                    return '<h4>'.$text.'</h4>';
+            }else{
+                    $base = '<h4 ';
+                    foreach ($attrb as $key => $value) {
+                            $base .= ' '.$key.'="'.$value.'"';
+                    }
+                    $base.= ' >'.$text.'</h4>';
+                    return $base;
+            }
         }
         /**
         *	@param string  Text
@@ -387,17 +384,17 @@ class Tags
         */
         public function H5($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<h5>'.$text.'</h5>';
-                }else{
-                        $base = '<h5 ';
-                        foreach ($attrb as $key => $value) {
-                                $base .= ' '.$key.'="'.$value.'"';
-                        }
-                        $base.= ' >'.$text.'</h5>';
-                        return $base;
-                }
+            if($attrb==null)
+            {
+                    return '<h5>'.$text.'</h5>';
+            }else{
+                    $base = '<h5 ';
+                    foreach ($attrb as $key => $value) {
+                            $base .= ' '.$key.'="'.$value.'"';
+                    }
+                    $base.= ' >'.$text.'</h5>';
+                    return $base;
+            }
         }
         /**
         *	@param string  Text
@@ -406,17 +403,17 @@ class Tags
         */
         public function H6($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<h6>'.$text.'</h6>';
-                }else{
-                        $base = '<h6 ';
-                        foreach ($attrb as $key => $value) {
-                                $base .= ' '.$key.'="'.$value.'"';
-                        }
-                        $base.= ' >'.$text.'</h6>';
-                        return $base;
-                }
+            if($attrb==null)
+            {
+                    return '<h6>'.$text.'</h6>';
+            }else{
+                    $base = '<h6 ';
+                    foreach ($attrb as $key => $value) {
+                            $base .= ' '.$key.'="'.$value.'"';
+                    }
+                    $base.= ' >'.$text.'</h6>';
+                    return $base;
+            }
         }
 
 
@@ -426,7 +423,7 @@ class Tags
         public function Hr()
         {
 
-                return "<hr>";
+            return "<hr>";
         }
 
         /**
@@ -436,18 +433,18 @@ class Tags
         */
         public function I($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<i>'.$text.'</i>';
-                }else
-                {
-                    $base = '<i ';
-                    foreach ($attrb as $key => $value) {
-                            $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</i>';
-                    return $base;
+            if($attrb==null)
+            {
+                    return '<i>'.$text.'</i>';
+            }else
+            {
+                $base = '<i ';
+                foreach ($attrb as $key => $value) {
+                        $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</i>';
+                return $base;
+            }
         }
 
         /**
@@ -457,18 +454,18 @@ class Tags
         */
         public function U($text=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<u>'.$text.'</u>';
-                }else
-                {
-                    $base = '<u ';
-                    foreach ($attrb as $key => $value) {
-                            $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</u>';
-                    return $base;
+            if($attrb==null)
+            {
+                    return '<u>'.$text.'</u>';
+            }else
+            {
+                $base = '<u ';
+                foreach ($attrb as $key => $value) {
+                        $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</u>';
+                return $base;
+            }
         }
 
 
@@ -479,18 +476,18 @@ class Tags
         */
         public function Img($src=null, $attrb=null)
         {
-                if($attrb==null)
-                {
-                    return '<img src="'.$src.'">';
-                }else
-                {
-                    $base = '<img src="'.$src.'" ';
-                    foreach ($attrb as $key => $value) {
-                            $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >';
-                    return $base;
+            if($attrb==null)
+            {
+                return '<img src="'.$src.'">';
+            }else
+            {
+                $base = '<img src="'.$src.'" ';
+                foreach ($attrb as $key => $value) {
+                        $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >';
+                return $base;
+            }
         }
 
         /**
@@ -522,17 +519,17 @@ class Tags
         */
         public function Meter($value=0, $text="display text", $attrb=null)
         {
-                if($attrb==null)
-                {
-                    return '<meter value="'.$value.'" >'.$text.'</meter>';
-                }else{
-                    $base = '<meter value="'.$value.'" ';
-                    foreach ($attrb as $key => $value) {
-                            $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</meter>';
-                    return $base;
+            if($attrb==null)
+            {
+                return '<meter value="'.$value.'" >'.$text.'</meter>';
+            }else{
+                $base = '<meter value="'.$value.'" ';
+                foreach ($attrb as $key => $value) {
+                        $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</meter>';
+                return $base;
+            }
         }
 
         /**
@@ -553,18 +550,18 @@ class Tags
         */
         public function Progress($value=0, $max="100", $attrb=null)
         {
-                if($attrb==null)
-                {
-                        return '<Progress value="'.$value.'"  max="'.$max.'"></Progress>';
-                }else
-                {
-                    $base = '<Progress value="'.$value.'"  max="'.$max.'" ';
-                    foreach ($attrb as $key => $value) {
-                            $base .= ' '.$key.'="'.$value.'"';
-                    }
-                    $base.= ' >'.$text.'</Progress>';
-                    return $base;
+            if($attrb==null)
+            {
+                    return '<Progress value="'.$value.'"  max="'.$max.'"></Progress>';
+            }else
+            {
+                $base = '<Progress value="'.$value.'"  max="'.$max.'" ';
+                foreach ($attrb as $key => $value) {
+                        $base .= ' '.$key.'="'.$value.'"';
                 }
+                $base.= ' >'.$text.'</Progress>';
+                return $base;
+            }
         }
 
 
@@ -575,13 +572,15 @@ class Tags
         public  static function Version()
         {return "1.0";}
 
-}
+    }
 
 
 
-//helper classes for html tags
-class dl_helper
-{
+    /*
+     * Helper classes for Tags
+     */
+    class dl_helper
+    {
         private $base="";
         private $contents="";
 
@@ -647,122 +646,122 @@ class dl_helper
                 $total_list .= "</dl>";
                 return $total_list;
         }
-}
+    }
 
 
-class ul_ol_helper
-{
+    class ul_ol_helper
+    {
         private $base="";
         private $contents="";
         private $type_gl = "ul";
         function __construct($type=null, $attrb=null)
         {
-                $this->type_gl = $type; 
-                if(!isset($attrb))
-                {
-                        $this->base .= '<'.$type.'> ';
-                }else{
-                        $item1 ='<'.$type.' ';
-                        foreach ($attrb as $key => $value) {
-                                $item1.= ' '.$key.'="'.$value.'"';
-                        }
-                        $item1 .= ">";
-                        $this->base .= $item1;
-                }
-                return $this;
+            $this->type_gl = $type; 
+            if(!isset($attrb))
+            {
+                    $this->base .= '<'.$type.'> ';
+            }else{
+                    $item1 ='<'.$type.' ';
+                    foreach ($attrb as $key => $value) {
+                            $item1.= ' '.$key.'="'.$value.'"';
+                    }
+                    $item1 .= ">";
+                    $this->base .= $item1;
+            }
+            return $this;
         }
 
         public function li($text,$attrb=null)
         {
-                if($attrb==null)
-                {
-                        $this->contents .= '<li>'.$text.'</li>';
-                }else{
-                        $item1='<li ';
+            if($attrb==null)
+            {
+                    $this->contents .= '<li>'.$text.'</li>';
+            }else{
+                    $item1='<li ';
 
-                        foreach ($attrb as $key => $value) {
-                                $item1.= ' '.$key.'="'.$value.'"';
-                        }
-                        $item1.= ' >'.$text.'</li>';
-                        $this->contents .=$item1;
-                }
+                    foreach ($attrb as $key => $value) {
+                            $item1.= ' '.$key.'="'.$value.'"';
+                    }
+                    $item1.= ' >'.$text.'</li>';
+                    $this->contents .=$item1;
+            }
 
-                return $this;
+            return $this;
         }
 
 
         public function Create()
         {
-                $total_list = $this->base;
-                $total_list .= $this->contents;
-                $total_list .= "</".$this->type_gl.">";
-                return $total_list;
+            $total_list = $this->base;
+            $total_list .= $this->contents;
+            $total_list .= "</".$this->type_gl.">";
+            return $total_list;
         }
-}
+    }
 
 
-class select_helper
-{
+    class select_helper
+    {
         private $base="";
         private $contents="";
 
         function __construct($attrb=null)
         {
-                if(!isset($attrb))
-                {
-                        $this->base .= '<select> ';
-                }else{
-                        $item1 ='<select ';
-                        foreach ($attrb as $key => $value) {
-                                $item1.= ' '.$key.'="'.$value.'"';
-                        }
-                        $item1 .= ">";
-                        $this->base .= $item1;
-                }
-                return $this;
+            if(!isset($attrb))
+            {
+                    $this->base .= '<select> ';
+            }else{
+                    $item1 ='<select ';
+                    foreach ($attrb as $key => $value) {
+                            $item1.= ' '.$key.'="'.$value.'"';
+                    }
+                    $item1 .= ">";
+                    $this->base .= $item1;
+            }
+            return $this;
         }
 
         public function option($text=null, $value=null ,$attrb=null)
         {
-                if($attrb==null)
-                {
-                        $this->contents .= '<option value="'.$value.'">'.$text.'</option>';
-                }else{
-                        $item1='<option value="'.$value.'" ';
+            if($attrb==null)
+            {
+                    $this->contents .= '<option value="'.$value.'">'.$text.'</option>';
+            }else{
+                    $item1='<option value="'.$value.'" ';
 
-                        foreach ($attrb as $key => $value) {
-                                $item1.= ' '.$key.'="'.$value.'"';
-                        }
-                        $item1.= ' >'.$text.'</option>';
-                        $this->contents .=$item1;
-                }
+                    foreach ($attrb as $key => $value) {
+                            $item1.= ' '.$key.'="'.$value.'"';
+                    }
+                    $item1.= ' >'.$text.'</option>';
+                    $this->contents .=$item1;
+            }
 
-                return $this;
+            return $this;
         }
 
         public function optgroup($text=null,$attrb=null)
         {
-                if($attrb==null)
-                {
-                        $this->contents .= '<optgroup label="'.$text.'" >';
-                }else{
-                        $item1  = '<optgroup label="'.$text.'" ';
-                        foreach ($attrb as $key => $value) {
-                                $item1.= ' '.$key.'="'.$value.'"';
-                        }
-                        $item1 .= ' >';
-                        $this->contents .= $item1;
-                }
+            if($attrb==null)
+            {
+                    $this->contents .= '<optgroup label="'.$text.'" >';
+            }else{
+                    $item1  = '<optgroup label="'.$text.'" ';
+                    foreach ($attrb as $key => $value) {
+                            $item1.= ' '.$key.'="'.$value.'"';
+                    }
+                    $item1 .= ' >';
+                    $this->contents .= $item1;
+            }
 
-                return $this;
+            return $this;
         }
 
         public function Create()
         {
-                $total_list = $this->base;
-                $total_list .= $this->contents;
-                $total_list .= "</select>";
-                return $total_list;
+            $total_list = $this->base;
+            $total_list .= $this->contents;
+            $total_list .= "</select>";
+            return $total_list;
         }
 
 

@@ -15,6 +15,7 @@ namespace limeberry
     require_once 'limeberry/autoloader.php';
     require_once 'limeberry/base.php';
     use limeberry\Url as purl;
+    use limeberry\Configuration as conf;
     
     /**
     * Core Module of Limeberry Framework
@@ -58,14 +59,6 @@ namespace limeberry
          */
 	public static function Run()
 	{
-            //get global application path from app_config
-            global $application_folder;
-            
-            //get if application is located in root dir. Will be used in dir lookup.
-            global $application_is_root;
-            
-            
-            global $application_query_data;
             
          
             //explode query data to array for using with security check.
@@ -88,7 +81,7 @@ namespace limeberry
             $tk4 = 4;
             
             //get configurations from app_config and look if app is in root or not.
-            if(!($application_is_root))
+            if(!(conf::isRoot()))
             {
                 $tk1 = 1+1;
                 $tk2 = 2+1;
@@ -109,9 +102,9 @@ namespace limeberry
             
             //Look for controllers and run the app.
             $controllerName = $tokens[$tk1].'Controller';
-            if(file_exists($application_folder.DS.'controller'.DS.$area.$controllerName.'.php'))
+            if(file_exists(conf::getApplicationFolder().DS.'controller'.DS.$area.$controllerName.'.php'))
             {
-                require_once($application_folder.DS.'controller'.DS.$area.$controllerName.'.php');
+                require_once(conf::getApplicationFolder().DS.'controller'.DS.$area.$controllerName.'.php');
                 
                 $controller = new $controllerName;
                 if (isset($tokens[$tk2]) && ($tokens[$tk2] != "")) 
@@ -138,9 +131,9 @@ namespace limeberry
                 //Check if controller defined in url, if not look for Index.php controller and IndexAction by default.
                 if($tokens[$tk1] == "")
                 {
-                    if(file_exists($application_folder.DS.'controller'.DS.'indexController.php'))
+                    if(file_exists(conf::getApplicationFolder().DS.'controller'.DS.'indexController.php'))
                     {
-                        require_once($application_folder.DS.'controller'.DS.'indexController.php');
+                        require_once(conf::getApplicationFolder().DS.'controller'.DS.'indexController.php');
                         $controllerName = 'indexController';
                         $controller = new $controllerName;
                         $controller->indexAction();
@@ -149,7 +142,7 @@ namespace limeberry
                 else
                 {
                     //if not found an entry point(also indexController.php & IndexAction ) load a 404 error.
-                    require_once($application_folder.DS.'controller'.DS.'ErrorHandling.php');
+                    require_once(conf::getApplicationFolder().DS.'controller'.DS.'ErrorHandling.php');
                     $controllerName = 'ErrorHandling';
                     $controller = new $controllerName;
                     $controller->NotFound();
@@ -164,24 +157,19 @@ namespace limeberry
          */
         private static function checkUrlProtection($tokens_array)
         {
-            #define globals
-            global $application_is_urlsecure;
-            global $application_unwanted_params;
-            global $application_folder;
-            
             #see the config file if secured url is enabled, if true
-            if($application_is_urlsecure)
+            if(conf::isUrlProtected())
             {
                 #look for each parameter in url
                 foreach ($tokens_array as $value) 
                 { 
-                    foreach($application_unwanted_params as $unwanted)
+                    foreach(conf::getUnwantedParameters() as $unwanted)
                     {
                         #check each url token with each unwanted parameter if contains it.
                         if(strpos($value, $unwanted) !==false)
                         {
                             #force redirect to ErrorHandling Controller  
-                            require_once($application_folder.DS.'controller'.DS.'ErrorHandling.php');
+                            require_once(conf::getApplicationFolder().DS.'controller'.DS.'ErrorHandling.php');
                             $controllerName = 'ErrorHandling';
                             $controller = new $controllerName;
                             $controller->ProtectedUrl($value, $unwanted);
@@ -192,16 +180,6 @@ namespace limeberry
             }           
         }
         
-
-        
-        /**
-         * Version Number of Framework.
-         * @return string
-         */
-        public static function Version()
-        {
-            return "1.x";
-        }
     }
 }
 ?>

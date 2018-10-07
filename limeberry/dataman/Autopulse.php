@@ -157,22 +157,22 @@ namespace limeberry\dataman
         {
             try
             {
-                    //get table name from model
-                    $table = self::nameOptimizer(get_class($modelForm));
-                    //command builder;
-                    $command='delete from '.$table.' ';
-                    if($whereOption !=null )
-                    {
-                            $command.='where '.$whereOption;
-                    }
-                    //parameter binder;
-                    #define database
-                    $m_cmd = new DbCommand($command, $dbclassinstance);
-                    $m_cmd->Execute();
-                    return true;
+                //get table name from model
+                $table = self::nameOptimizer(get_class($modelForm));
+                //command builder;
+                $command='delete from '.$table.' ';
+                if($whereOption !=null )
+                {
+                        $command.='where '.$whereOption;
+                }
+                //parameter binder;
+                #define database
+                $m_cmd = new DbCommand($command, $dbclassinstance);
+                $m_cmd->Execute();
+                return true;
             }catch(Exception $ex){
-                    return $ex->getMessage();
-                    return false;
+                return $ex->getMessage();
+                return false;
             }
         }
         
@@ -191,22 +191,22 @@ namespace limeberry\dataman
         {
             try
             {
-                    //get table name from model
-                    $table = self::nameOptimizer($tableName);
-                    //command builder;
-                    $command='delete from '.$table.' ';
-                    if($whereOption !=null )
-                    {
-                            $command.='where '.$whereOption;
-                    }
-                    //parameter binder;
-                    #define database
-                    $m_cmd = new DbCommand($command, $dbclassinstance);
-                    $m_cmd->Execute();
-                    return true;
+                //get table name from model
+                $table = self::nameOptimizer($tableName);
+                //command builder;
+                $command='delete from '.$table.' ';
+                if($whereOption !=null )
+                {
+                        $command.='where '.$whereOption;
+                }
+                //parameter binder;
+                #define database
+                $m_cmd = new DbCommand($command, $dbclassinstance);
+                $m_cmd->Execute();
+                return true;
             }catch(Exception $ex){
-                    return $ex->getMessage();
-                    return false;
+                return $ex->getMessage();
+                return false;
             }
         }
         

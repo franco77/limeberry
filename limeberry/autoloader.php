@@ -18,6 +18,7 @@ require_once 'base.php';
 spl_autoload_register(function ($class)
 {
     $prefixes = array(
+        "limeberry\\",
         "limeberry\\dataman\\",
         "limeberry\\forms\\",
         "limeberry\\helpers\\",

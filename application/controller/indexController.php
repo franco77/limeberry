@@ -7,7 +7,7 @@ class indexController extends myController{
     
     public function indexAction($param=0)
     {      
-        $this->View->Render("index.php");
+        $this->View->Render("start_screen.php");
     }
 }
 

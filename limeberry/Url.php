@@ -13,6 +13,7 @@
 namespace limeberry
 {   
     require_once('base.php');
+    use limeberry\Configuration as conf;
     
     /**
      * An url Helper class to manage your application's routing and navigating actions. 
@@ -32,12 +33,11 @@ namespace limeberry
          **/
 	public static function RedirectToAction($controllerName, $action, $parameter=null)
 	{ 
-	    global $application_install_url;
 	    if(isset($parameter))
 	    {
-	        return $application_install_url.'/'.$controllerName.'/'.$action.'/'.$parameter;
+	        return conf::getApplicationUrl().'/'.$controllerName.'/'.$action.'/'.$parameter;
 	    }else{
-                return  $application_install_url.'/'.$controllerName.'/'.$action;
+                return  conf::getApplicationUrl().'/'.$controllerName.'/'.$action;
 	    }
 	}
         
@@ -54,14 +54,13 @@ namespace limeberry
          **/
 	public static function AreaRedirection($Area = "", $controllerName="", $action="", $parameter=null)
 	{ 
-	    global $application_install_url;
             
             $addArea = "?p=".$Area;
 	    if(isset($parameter))
 	    {
-	        return $application_install_url.'/'.$controllerName.'/'.$action.'/'.$parameter.$addArea;
+	        return conf::getApplicationUrl().'/'.$controllerName.'/'.$action.'/'.$parameter.$addArea;
 	    }else{
-                return  $application_install_url.'/'.$controllerName.'/'.$action.$addArea;
+                return  conf::getApplicationUrl().'/'.$controllerName.'/'.$action.$addArea;
 	    }
 	}
         
@@ -71,8 +70,7 @@ namespace limeberry
          */
         public function getArea($willWork = true)
         {
-            global $application_query_data;
-            
+           $application_query_data = conf::getQuery();
             if(!empty($application_query_data["p"]))
             {
                 return $application_query_data["p"]."Area".DS;
@@ -120,7 +118,7 @@ namespace limeberry
          */
         public static function getData($paramid = null)
         {
-            global $application_query_data;
+            $application_query_data = conf::getQuery();
             if(is_null($paramid))
             {
                 return $application_query_data;
@@ -140,7 +138,7 @@ namespace limeberry
          */
         public static function _clear_url_parameters($query_params = null)
         {
-            global $application_query_data;
+            $application_query_data = conf::getQuery();
             $temp_data = array();
             $qprm_a = explode("&", $query_params);
             

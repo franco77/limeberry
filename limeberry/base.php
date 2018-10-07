@@ -11,31 +11,14 @@
 *	
 **/
 
-
-
-$application_folder = "application";
-$application_is_root = false;
-
-$application_is_urlsecure = false;
-$application_unwanted_params = array();
-
-$application_install_url = "localhost";
-$application_static_routes = array();
-
-$application_name = "Limeberry Application";
-$application_version = "1.0.0";
-$application_description = "Your description for the application";
-   
-
-$application_query_data = array();
-
-/**
- * @ignore
- */
+/** 
+ * Directory Separator Constant
+ *  */
 define('DS', DIRECTORY_SEPARATOR);
-/**
- * @ignore
- */
+
+/** 
+ * Root Directory of current running php file.
+ *  */
 define('ROOT', dirname(dirname(__FILE__)));
 
 

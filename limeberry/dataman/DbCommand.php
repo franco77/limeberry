@@ -44,8 +44,8 @@ namespace limeberry\dataman
          */
         function __construct($query=null, $con=null)
         {
-                $this->_connection= $con;
-                $this->statement = $this->_connection->prepare($query);
+            $this->_connection= $con;
+            $this->statement = $this->_connection->prepare($query);
         }
 
 
@@ -121,7 +121,7 @@ namespace limeberry\dataman
          */
         public function Execute()
         {
-                return $this->statement->execute();
+            return $this->statement->execute();
         }
 
     }

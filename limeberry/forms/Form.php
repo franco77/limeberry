@@ -29,6 +29,7 @@ namespace limeberry\forms
         protected $formElements;
         protected $modelInstance;
         protected $formName;
+        protected $isFormProtected;
              
         /**
          * Initialize a form class
@@ -40,6 +41,7 @@ namespace limeberry\forms
             $this->formElements = "";   
             $this->modelInstance = "";   
             $this->formName = $formName;
+            $this->isFormProtected = false;
         }
 
         /**
@@ -78,6 +80,15 @@ namespace limeberry\forms
             }
         }
         
+        /**
+         * Enable or Disable XSS filter
+         * @param type $isSecured
+         */
+        public function  setProtected($isSecured = true)
+        {
+            $this->isFormProtected = $isSecured;
+        }
+
         /**
          * This function is used to created form elements
          * @param type $element FormElements class methods
@@ -118,15 +129,41 @@ namespace limeberry\forms
                         foreach ($paramsPosted as $key => $value) {
                             if(property_exists($this->modelInstance, $key))
                             {
-                                $modelClass->$key = $_POST[$key];
+                                $modelClass->$key = $this->_xssPrevent($_POST[$key]);
                             }
                         }
-                        $modelClass->{$actionName}();
+                        
+                        //check if csrf_field instialized and if its matchs
+                        if(isset($_POST["csrf_field"])){
+                            
+                            if($_POST["csrf_field"] == sha1(\limeberry\Url::getUrl())){
+                                //CSRF USED VALUE MATCHED
+                                $modelClass->{$actionName}();
+                            }else{
+                                //CSRD USED VALUE NOT MATCHED
+                            }
+                        }else{
+                            //CSRF protection not enabled
+                            $modelClass->{$actionName}();
+                        }
+                        
 		    }
             }
             
         }
         
+        /* *
+         * @ignore
+         */
+        private function _xssPrevent($data){
+            if($this->isFormProtected){
+                return htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+            }else{
+                return $data;
+            }
+        }
+
+
         /**
          * @ignore
          */
