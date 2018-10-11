@@ -25,7 +25,8 @@ spl_autoload_register(function ($class)
         "limeberry\\io\\",
         "limeberry\\security\\",
         "limeberry\\tool\\",
-        "limeberry\\visual\\"
+        "limeberry\\visual\\",
+        "limeberry\\core\\"
     );
     $baseDir = ROOT . DS;
     $baseDir = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $baseDir);

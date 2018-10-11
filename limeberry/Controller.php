@@ -14,6 +14,8 @@ namespace limeberry
 {
     
     use limeberry\View;
+    use limeberry\core\Content;
+    
         
     /**
     * Controller class of Limeberry framework
@@ -29,6 +31,7 @@ namespace limeberry
 	public function __construct()
         {
             $this->View = new View();
+            $this->Content = new Content();
         }
 
         /**

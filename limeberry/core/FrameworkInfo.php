@@ -10,7 +10,7 @@
 *	@copyright Copyright (C) 2018 Sinan SALIH
 *	
 **/
-namespace limeberry
+namespace limeberry\core
 {
     /**
      * FrameworkInfo class contains information and version data of the framework. 
@@ -28,7 +28,7 @@ namespace limeberry
          * Last configuration on core framework files of the Limeberry
          */
         public static function LastUpdate(){
-            return "1.2@10.1 Update - 7 October 2018 ";
+            return "1.2@10.1 Update -  October 2018 ";
         }
     }
     
