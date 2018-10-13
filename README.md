@@ -32,13 +32,13 @@ In simple words; it is for you...
   - An easy to use template engine.
 
 
-## Download (v1.2)
+## Download (v1.3)
 > composer create-project limeberry/limeberry
-- Or clone this repository if you want to create a new project with Limeberry PHP v1.2
+- Or clone this repository if you want to create a new project with Limeberry PHP v1.3
 
 ## Learning Limeberry Framework
 We tried to explain the definitions and usage of the framework in a simple user manual. You can start learning Limeberry from the user manual. We are working harder to create slideshow tutorials and some educational material for the framework. We will begin publishing new tutorials as soon as possible.
-- [Limeberry Framework v1.x User Manual](https://limeberry.github.io/docs/index.html)
+- [Limeberry Framework v1.3 User Manual](https://limeberry.github.io/docs/index.html)
 
 
 
